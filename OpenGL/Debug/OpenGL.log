@@ -1,0 +1,20 @@
+﻿  GlutCallbacks.cpp
+  HelloGL.cpp
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(28,16): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(28,16): warning C4154: deletion of an array expression; conversion to pointer supplied
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(155,224): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(155,203): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(155,182): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(155,161): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(172,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(173,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(174,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(176,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(177,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(178,29): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(180,30): warning C4305: '=': truncation from 'double' to 'float'
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(181,30): warning C4305: '=': truncation from 'double' to 'float'
+  main.cpp
+  Generating Code...
+D:\GITHUB\FOGGS\Semester 2\OpenGL\OpenGL\HelloGL.cpp(182,30): warning C4305: '=': truncation from 'double' to 'float'
+  OpenGL.vcxproj -> D:\GITHUB\FOGGS\Semester 2\OpenGL\Debug\OpenGL.exe
