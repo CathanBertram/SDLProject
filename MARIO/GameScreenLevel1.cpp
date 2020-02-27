@@ -5,8 +5,8 @@
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
-	SetUpLevel();
 	mLevelMap = NULL;
+	SetUpLevel();
 }
 
 GameScreenLevel1::~GameScreenLevel1()
@@ -151,9 +151,9 @@ void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float sp
 
 void GameScreenLevel1::CreateCoin(Vector2D position)
 {
-	Coin* coin;
-	coin = new Coin(mRenderer, "Images/CoinSheet.png", position);
-	mCoins.push_back(coin);
+	//Coin* coin;
+	//coin = new Coin(mRenderer, "Images/CoinSheet.png", position);
+	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position));
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -165,15 +165,13 @@ bool GameScreenLevel1::SetUpLevel()
 		return false;
 	}
 	SetLevelMap();
+	CreateCoin(Vector2D(200, 96));
 	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", Vector2D(64, 330), mLevelMap);
 	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", Vector2D(448, 330), mLevelMap);
-	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
-	CreateCoin(Vector2D(200, 96));
 	mPowBlock = new PowBlock(mRenderer, mLevelMap);
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
-	return false;
+	return true;
 }
 
 void GameScreenLevel1::SetLevelMap()
@@ -197,5 +195,7 @@ void GameScreenLevel1::SetLevelMap()
 	}
 	mLevelMap = new LevelMap(map);
 
+	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
 
 }

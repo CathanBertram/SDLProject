@@ -1,3 +1,13 @@
-﻿  GameScreenLevel1.cpp
-D:\GITHUB\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+﻿  PowBlock.cpp
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(17,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(18,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(36,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,46): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,46): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,66): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,66): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,64): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,64): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
