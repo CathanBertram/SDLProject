@@ -10,6 +10,7 @@
 #include "CharacterKoopa.h"
 #include "Collisions.h"
 #include "LevelMap.h"
+#include "Coin.h"
 
 class Character;
 class Texture2D;
@@ -27,11 +28,13 @@ public:
 	void UpdatePowBlock(float deltaTime);
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreateCoin(Vector2D position);
 private:
 	Texture2D* mBackgroundTexture;
 	CharacterMario* mario;	
 	CharacterLuigi* luigi;
 	vector<CharacterKoopa*> mKoopas;
+	vector<Coin*> mCoins;
 
 	Vector2D mPos;
 	Vector2D lPos;

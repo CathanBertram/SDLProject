@@ -19,20 +19,19 @@ public:
 	float GetCollisionRadius();
 
 	void SetPosition(Vector2D newPosition);
+
 	Vector2D GetPosition();
 	Rect2D GetCollisionBox()
 	{
 		return Rect2D(mPosition.x, mPosition.y, mSingleSpriteWidth, mSingleSpriteHeight);
 	};
+
 	bool IsJumping() { return mJumping; };
 	void CancelJump();
 protected:
 	FACING mFacingDirection;
 	bool mMovingLeft;
 	bool mMovingRight;
-	float gravity = 300.0f;
-	const float JUMP_FORCE_DECREMENT = 1000.0f;
-	const float INITIAL_JUMP_FORCE = 800.0f;
 
 	void Jump();
 	void AddGravity(float deltaTime);

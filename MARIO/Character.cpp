@@ -45,8 +45,8 @@ void Character::Update(float deltaTime, SDL_Event e)
 	int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
 	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition)==0)
 	{
-	//Adds Gravity Force
-	AddGravity(deltaTime);
+		//Adds Gravity Force
+		AddGravity(deltaTime);
 	}
 	else
 	{
@@ -62,7 +62,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		//Reduce Jump Force
 		mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
 
-		if (gravity > mJumpForce)
+		if (GRAVITY > mJumpForce)
 		{
 			mFalling = true;
 		}
@@ -128,7 +128,7 @@ void Character::AddGravity(float deltaTime)
 {
 	if (mPosition.y < SCREEN_HEIGHT - 42)
 	{
-	mPosition.y += gravity*deltaTime;
+	mPosition.y += GRAVITY * deltaTime;
 	}
 	else
 	{
