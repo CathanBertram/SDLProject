@@ -1,64 +1,35 @@
 #pragma once
-#include <SDL.h>
-#include <iostream>
-#include "Commons.h"
-#include "Main.h"
-#include "LevelMap.h"
-#include "Texture2D.h"
+#include "GameObject.h"
 
 class Texture2D;
 
-class Character
+class Character : public GameObject
 {
 public:
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map);
+	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity);
 	~Character();
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
-	float GetCollisionRadius();
-
-	void SetPosition(Vector2D newPosition);
-
-	Vector2D GetPosition();
-	Rect2D GetCollisionBox()
-	{
-		return Rect2D(mPosition.x, mPosition.y, mSingleSpriteWidth, mSingleSpriteHeight);
-	};
 
 	bool IsJumping() { return mJumping; };
 	void CancelJump();
+
 protected:
-	FACING mFacingDirection;
 	bool mMovingLeft;
 	bool mMovingRight;
 
 	void Jump();
-	void AddGravity(float deltaTime);
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 	bool mFalling;
 
-	SDL_Renderer* mRenderer;
-	Vector2D mPosition;
-	Texture2D* mTexture;
-	Circle2D mCircle;
-	float mCollisionRadius;
-
-	//Spritesheet Variables
-	float mSingleSpriteWidth;
-	float mSingleSpriteHeight;
-	float frame;
-	int slice; //Slice From Spritesheet
 	bool moving;
-	const int cFrameTime = 1; //Time For Anim Loop
 	float speed;
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
 
-private:
-
-	LevelMap* mCurrentLevelMap;
+	FACING mFacingDirection;
 };
 

@@ -1,6 +1,6 @@
 #include "Coin.h"
 
-Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition)
+Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, bool gravity) : GameObject(renderer, imagePath, startPosition, map, gravity)
 {
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
@@ -11,7 +11,6 @@ Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition
 	slice = 0;
 	mSingleSpriteWidth = mTexture->GetWidth() / 4;
 	mSingleSpriteHeight = mTexture->GetHeight();
-	std::cerr << mSingleSpriteWidth << "   " << mSingleSpriteHeight << std::endl;
 }
 
 Coin::~Coin()

@@ -1,18 +1,18 @@
 #include "Character.h"
 #include "Texture2D.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, map, gravity)
 {
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
 	mTexture->LoadFromFile(imagePath);
 	mPosition = startPosition;
-	mFacingDirection = FACING_RIGHT;
 	mMovingLeft = false;
 	mMovingRight = false;
 	speed = 250;
 	mCollisionRadius = 15.0f;
 	mCurrentLevelMap = map;
+	mFacingDirection = startFace;
 
 	frame = 1;
 }
@@ -41,18 +41,19 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	int centralXPosition = (int)(mPosition.x + ((mTexture->GetWidth()/12) * 0.5f)) / TILE_WIDTH;
+	int centralXPosition = (int)(mPosition.x + ((mTexture->GetWidth() / 12) * 0.5f)) / TILE_WIDTH;
 	int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
-	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition)==0)
+	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0)
 	{
 		//Adds Gravity Force
 		AddGravity(deltaTime);
+		mCanJump = false;
 	}
 	else
 	{
 		mCanJump = true;
 	}
-	
+
 	//Jump Force Change
 	if (mJumping)
 	{
@@ -92,21 +93,6 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		moving = false;
 	}
-	
-}
-float Character::GetCollisionRadius()
-{
-	return mSingleSpriteWidth/2;
-}
-
-void Character::SetPosition(Vector2D newPosition)
-{
-	mPosition = newPosition;
-}
-
-Vector2D Character::GetPosition()
-{
-	return mPosition;
 }
 
 void Character::CancelJump()
@@ -116,23 +102,11 @@ void Character::CancelJump()
 
 void Character::Jump()
 {
-	if (!mJumping)
+	if (!mJumping && mCanJump)
 	{
 		mJumpForce = INITIAL_JUMP_FORCE;
 		mJumping = true;
 		mCanJump = false;
-	}
-}
-
-void Character::AddGravity(float deltaTime)
-{
-	if (mPosition.y < SCREEN_HEIGHT - 42)
-	{
-	mPosition.y += GRAVITY * deltaTime;
-	}
-	else
-	{
-		mCanJump = true;
 	}
 }
 
