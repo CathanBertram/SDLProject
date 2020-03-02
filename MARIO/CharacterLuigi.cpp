@@ -4,7 +4,7 @@ CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Ve
 {
 	mRenderer = renderer;
 	mSingleSpriteWidth = mTexture->GetWidth() / 12;
-	mSingleSpriteHeight = mTexture->GetHeight();
+	mSingleSpriteHeight = mTexture->GetHeight() / 3;
 }
 
 CharacterLuigi::~CharacterLuigi()

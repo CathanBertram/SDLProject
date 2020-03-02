@@ -1,9 +1,6 @@
-﻿  Character.cpp
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(22): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\SDLProject\Debug\MARIO.exe
+﻿  CharacterLuigi.cpp
+D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(6,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(7,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(12,19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+D:\GITHUB\SDLProject\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
+  MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
