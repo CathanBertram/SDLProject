@@ -1,6 +1,6 @@
 #include "CharacterMario.h"
 
-CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map) : Character(renderer, imagePath, startPosition, map)
+CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, map, startFace, gravity)
 {
 	mRenderer = renderer;
 
@@ -56,7 +56,7 @@ void CharacterMario::Update(float deltaTime, SDL_Event e)
 			mMovingRight = true;
 			break;
 		case SDLK_UP:
-			Jump();
+			Jump();	
 			break;
 		}
 

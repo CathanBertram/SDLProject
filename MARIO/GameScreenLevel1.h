@@ -28,7 +28,7 @@ public:
 	void UpdatePowBlock(float deltaTime);
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
-	void CreateCoin(Vector2D position);
+	void CreateCoin(Vector2D position, LevelMap* map);
 private:
 	Texture2D* mBackgroundTexture;
 	CharacterMario* mario;	

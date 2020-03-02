@@ -1,13 +1,9 @@
-﻿  PowBlock.cpp
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(17,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(18,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(36,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,46): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,46): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,66): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(37,66): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,64): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,64): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\SDLProject\MARIO\PowBlock.cpp(38,84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
+﻿  Character.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(22): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\SDLProject\Debug\MARIO.exe

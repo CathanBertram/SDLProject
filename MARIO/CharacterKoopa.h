@@ -3,7 +3,7 @@
 class CharacterKoopa : public Character
 {
 public:
-	CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, float movementSpeed);
+	CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity, float movementSpeed);
 	~CharacterKoopa();
 
 	void TakeDamage(float deltaTime);
