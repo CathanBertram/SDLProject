@@ -140,6 +140,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PowBlock.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +167,8 @@
     <ClInclude Include="PowBlock.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

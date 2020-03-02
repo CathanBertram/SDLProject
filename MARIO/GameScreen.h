@@ -1,6 +1,9 @@
 #pragma once
-#include <SDL.h>
 #include "Main.h"
+#include "TileMap.h"
+
+class Tile;
+class TileMap;
 
 class GameScreen
 {
@@ -10,6 +13,10 @@ public:
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
+
+	vector<Tile*> tileMap;
+	TileMap* map;
+
 protected:
 	SDL_Renderer* mRenderer;
 	bool mScreenshake;

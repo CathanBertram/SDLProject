@@ -1,7 +1,7 @@
 #include "Character.h"
 #include "Texture2D.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, map, gravity)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);

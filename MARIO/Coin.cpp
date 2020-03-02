@@ -1,6 +1,6 @@
 #include "Coin.h"
 
-Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, bool gravity) : GameObject(renderer, imagePath, startPosition, map, gravity)
+Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+#include <vector>
 #include "Main.h"
 
 class LevelMap

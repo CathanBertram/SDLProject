@@ -1,7 +1,29 @@
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\vc142.pdb
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\vc142.idb
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\timer.obj
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\main.obj
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\mario.tlog\cl.command.1.tlog
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\mario.tlog\cl.read.1.tlog
-c:\users\b012521i\onedrive - staffordshire university\games engine creation\semester 2\mario\mario\debug\mario.tlog\cl.write.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\vc142.pdb
+c:\users\b012521i\documents\github\sdlproject\mario\debug\vc142.idb
+c:\users\b012521i\documents\github\sdlproject\mario\debug\timer.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\tile.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\texture2d.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\powblock.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\main.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\levelmap.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\gamescreenmanager.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\gamescreenlevel1.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\gamescreenintro.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\gamescreen.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\gameobject.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\collisions.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\coin.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\charactermario.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\characterluigi.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\characterkoopa.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\character.obj
+c:\users\b012521i\documents\github\sdlproject\mario\debug\tilemap.obj
+c:\users\b012521i\documents\github\sdlproject\debug\mario.exe
+c:\users\b012521i\documents\github\sdlproject\debug\mario.ilk
+c:\users\b012521i\documents\github\sdlproject\debug\mario.pdb
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\cl.command.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\cl.read.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\cl.write.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\link.command.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\link.read.1.tlog
+c:\users\b012521i\documents\github\sdlproject\mario\debug\mario.tlog\link.write.1.tlog

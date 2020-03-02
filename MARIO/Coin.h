@@ -1,11 +1,10 @@
 #pragma once
-#include "Texture2D.h"
 #include "GameObject.h"
 
 class Coin : public GameObject
 {
 public:
-	Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, bool gravity);
+	Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity);
 	~Coin();
 
 	void Render();

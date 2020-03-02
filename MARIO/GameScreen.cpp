@@ -3,6 +3,7 @@
 GameScreen::GameScreen(SDL_Renderer* renderer)
 {
 	mRenderer = renderer;
+	map = new TileMap(tileMap, mRenderer, "Level/1.txt");
 }
 
 GameScreen::~GameScreen()

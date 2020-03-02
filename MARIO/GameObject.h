@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL.h>
+
 #include "Commons.h"
 #include "Main.h"
 #include "LevelMap.h"
@@ -8,7 +8,7 @@
 class GameObject
 {
 public:
-	GameObject(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, bool gravity);
+	GameObject(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity);
 	~GameObject();
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
@@ -39,8 +39,6 @@ protected:
 	float frame;
 	int slice; //Slice From Spritesheet
 	const int cFrameTime = 1; //Time For Anim Loop
-
-	LevelMap* mCurrentLevelMap;
 
 	bool gravityEnabled;
 };

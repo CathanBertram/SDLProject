@@ -3,6 +3,7 @@
 #include"Commons.h"
 #include "GameScreenIntro.h"
 #include "GameScreenLevel1.h"
+#include "TileMap.h"
 
 class GameScreen;
 

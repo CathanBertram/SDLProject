@@ -31,5 +31,6 @@ protected:
 	float mJumpForce;
 
 	FACING mFacingDirection;
+	LevelMap* mCurrentLevelMap;
 };
 

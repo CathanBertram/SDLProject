@@ -1,6 +1,68 @@
-﻿  CharacterLuigi.cpp
-D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(6,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(7,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\CharacterLuigi.cpp(12,19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-D:\GITHUB\SDLProject\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
-  MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
+﻿  Character.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(22): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Character.cpp(30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  CharacterKoopa.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(87): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(88): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(88): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(89): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.cpp(89): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  CharacterLuigi.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterLuigi.cpp(6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterLuigi.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterLuigi.cpp(12): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+  CharacterMario.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterMario.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterMario.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterMario.cpp(13): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+  Coin.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(26): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Coin.cpp(26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Collisions.cpp
+  GameObject.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\GameObject.cpp(16): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
+  GameScreen.cpp
+  GameScreenIntro.cpp
+  GameScreenLevel1.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\GameScreenLevel1.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  GameScreenManager.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  LevelMap.cpp
+  main.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  PowBlock.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(36): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(37): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\PowBlock.cpp(37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Tile.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Tile.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\Tile.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  TileMap.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\SDLProject\Debug\MARIO.exe
