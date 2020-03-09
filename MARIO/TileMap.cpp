@@ -50,6 +50,36 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		case 2:
 			tileMap.push_back(new Tile(mRenderer, "Images/BrickNew.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true));
 			break;
+		case 3:
+			//Create Blank Tile
+			//Create Mario
+			break;
+		case 4:
+			//Create Blank Tile
+			//Create Luigi
+			break;
+		case 5:
+			//Create Blank Tile
+			//Create Koopa
+			break;
+		case 6:
+			//Create Blank Tile
+			//Create PowBlock
+			break;
+		case 7:
+			//Create Blank Tile
+			//Create Coin
+			break;
+		case 8:
+			//Create Blank Tile
+			//Create Win Flag
+			break;
+		case 9:
+			//Create Unbreakable Tile
+			break;
+		case 10:
+			//Create Question Tile
+			break;
 		}
 		x++;
 		if (x >= levelWidth)
