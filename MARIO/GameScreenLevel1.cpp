@@ -25,7 +25,11 @@ GameScreenLevel1::~GameScreenLevel1()
 
 void GameScreenLevel1::Render()
 {
-	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
+	//mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
+	for (int i = 0; i < map->tileMap.size(); i++)
+	{
+		map->tileMap[i]->Render();
+	}
 	mario->Render();
 	luigi->Render();
 	mPowBlock->Render();
@@ -38,10 +42,6 @@ void GameScreenLevel1::Render()
 		mCoins[i]->Render();
 	}
 
-	for (int i = 0; i < tileMap.size(); i++)
-	{
-		tileMap[i]->Render();
-	}
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)

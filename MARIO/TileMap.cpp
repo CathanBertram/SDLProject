@@ -34,6 +34,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 	inFile >> levelWidth;
 	inFile >> levelHeight;
 
+	std::cerr << levelWidth << "  " << levelHeight << std::endl;
 	int temp;
 	int x = 0, y = 0;
 	while (!inFile.eof())
@@ -42,7 +43,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		switch (temp)
 		{
 		case 0:
-			tileMap.push_back(new Tile(mRenderer, "Images/Brick.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true));
+			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true));
 			break;
 		case 1:
 			tileMap.push_back(new Tile(mRenderer, "Images/Ground.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true));
@@ -51,8 +52,9 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			tileMap.push_back(new Tile(mRenderer, "Images/BrickNew.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true));
 			break;
 		}
+		std::cerr << tileMap.size() << std::endl;
 		x++;
-		if (x > levelWidth)
+		if (x >= levelWidth)
 		{
 			x = 0;
 			y++;
