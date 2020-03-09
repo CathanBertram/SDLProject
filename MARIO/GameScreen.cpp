@@ -3,12 +3,24 @@
 GameScreen::GameScreen(SDL_Renderer* renderer)
 {
 	mRenderer = renderer;
-	map = new TileMap(tileMap, mRenderer, "Level/1.txt");
+}
+
+GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
+{
+	mRenderer = renderer;
+	if (map != NULL)
+	{
+		delete map;
+		map = NULL;
+	}
+	map = new TileMap(tileMap, mRenderer, filePath);
 }
 
 GameScreen::~GameScreen()
 {
 	mRenderer = NULL;
+	delete map;
+	map = NULL;
 }
 
 void GameScreen::Render()
@@ -21,15 +33,19 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 
 bool GameScreen::CheckMapColl(GameObject* obj)
 {
-	for (int i = 0; i < map->tileMap.size(); i++)
+	if (map != NULL)
 	{
-		if (map->tileMap[i]->collidable == true)
+		for (int i = 0; i < map->tileMap.size(); i++)
 		{
-			if (Collisions::Instance()->Box(obj->GetCollisionBox(), map->tileMap[i]->GetCollisionBox()))
+			if (map->tileMap[i]->collidable == true)
 			{
-				return true;
+				if (Collisions::Instance()->Box(obj->GetCollisionBox(), map->tileMap[i]->GetCollisionBox()))
+				{
+					return true;
+				}
 			}
 		}
+		return false;
 	}
 	return false;
 }

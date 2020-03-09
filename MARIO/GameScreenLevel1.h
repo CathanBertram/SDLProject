@@ -19,7 +19,7 @@ class PowBlock;
 class GameScreenLevel1 : GameScreen
 {
 public:
-	GameScreenLevel1(SDL_Renderer* renderer);
+	GameScreenLevel1(SDL_Renderer* renderer, std::string filePath);
 	~GameScreenLevel1();
 
 	void Render();

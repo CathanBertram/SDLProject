@@ -11,6 +11,7 @@ class GameScreen
 {
 public:
 	GameScreen(SDL_Renderer* renderer);
+	GameScreen(SDL_Renderer* renderer, std::string filePath);
 	~GameScreen();
 
 	virtual void Render();

@@ -3,7 +3,7 @@
 #include "Texture2D.h"
 #include "PowBlock.h"
 
-GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
+GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, std::string filePath) : GameScreen(renderer, filePath)
 {
 	mLevelMap = NULL;
 	SetUpLevel();
@@ -25,7 +25,7 @@ GameScreenLevel1::~GameScreenLevel1()
 
 void GameScreenLevel1::Render()
 {
-	//mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
+	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
 	for (int i = 0; i < map->tileMap.size(); i++)
 	{
 		map->tileMap[i]->Render();
@@ -62,7 +62,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	}*/
 	if (CheckMapColl(mario))
 	{
-		mario->SetPosition(mPos);
+		mario->SetPositionY(mPos);
 		mario->gravityEnabled = false;
 	}
 	else
@@ -173,8 +173,9 @@ void GameScreenLevel1::CreateCoin(Vector2D position)
 
 bool GameScreenLevel1::SetUpLevel()
 {
+	std::cerr << "yes" << std::endl;
 	mBackgroundTexture = new Texture2D(mRenderer);
-	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundMB.png"))
+	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundLevel.png"))
 	{
 		std::cout << "Failed to load background texture!";
 		return false;
@@ -184,6 +185,9 @@ bool GameScreenLevel1::SetUpLevel()
 	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", Vector2D(64, 330), mLevelMap, FACING_RIGHT, true);
 	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", Vector2D(448, 330), mLevelMap, FACING_RIGHT, true);
 	mPowBlock = new PowBlock(mRenderer, mLevelMap);
+	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
+
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
 	return true;
@@ -209,8 +213,5 @@ void GameScreenLevel1::SetLevelMap()
 		delete mLevelMap;
 	}
 	mLevelMap = new LevelMap(map);
-
-	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
 
 }

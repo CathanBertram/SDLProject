@@ -14,6 +14,8 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 
 	void SetPosition(Vector2D newPosition);
+	void SetPositionX(Vector2D newPosition);
+	void SetPositionY(Vector2D newPosition);
 	Vector2D GetPosition();
 	Rect2D GetCollisionBox()
 	{

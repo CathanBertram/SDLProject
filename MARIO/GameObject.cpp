@@ -36,6 +36,16 @@ void GameObject::SetPosition(Vector2D newPosition)
 	mPosition = newPosition;
 }
 
+void GameObject::SetPositionX(Vector2D newPosition)
+{
+	mPosition.x = newPosition.x;
+}
+
+void GameObject::SetPositionY(Vector2D newPosition)
+{
+	mPosition.y = newPosition.y;
+}
+
 Vector2D GameObject::GetPosition()
 {
 	return mPosition;
