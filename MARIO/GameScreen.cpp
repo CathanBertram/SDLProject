@@ -19,6 +19,21 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 {
 }
 
+bool GameScreen::CheckMapColl(GameObject* obj)
+{
+	for (int i = 0; i < map->tileMap.size(); i++)
+	{
+		if (map->tileMap[i]->collidable == true)
+		{
+			if (Collisions::Instance()->Box(obj->GetCollisionBox(), map->tileMap[i]->GetCollisionBox()))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 void GameScreen::DoScreenshake()
 {
 	mScreenshake = true;

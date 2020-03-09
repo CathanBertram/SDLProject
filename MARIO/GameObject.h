@@ -23,6 +23,7 @@ public:
 		return mCollisionRadius;
 	}
 
+	bool gravityEnabled;
 protected:
 	void AddGravity(float deltaTime);
 
@@ -40,6 +41,5 @@ protected:
 	int slice; //Slice From Spritesheet
 	const int cFrameTime = 1; //Time For Anim Loop
 
-	bool gravityEnabled;
 };
 

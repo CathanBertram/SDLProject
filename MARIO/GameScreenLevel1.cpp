@@ -60,6 +60,15 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
 	}*/
+	if (CheckMapColl(mario))
+	{
+		mario->SetPosition(mPos);
+		mario->gravityEnabled = false;
+	}
+	else
+	{
+		mario->gravityEnabled = true;
+	}
 	if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
 	{
 		mario->SetPosition(mPos);

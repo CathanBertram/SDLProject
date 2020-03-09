@@ -1,4 +1,5 @@
-﻿  GameScreenLevel1.cpp
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\GameScreenLevel1.cpp(29): warning C4018: '<': signed/unsigned mismatch
+﻿  TileMap.cpp
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\SDLProject\MARIO\TileMap.cpp(52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\SDLProject\Debug\MARIO.exe

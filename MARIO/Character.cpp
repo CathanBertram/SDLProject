@@ -41,13 +41,13 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	int centralXPosition = (int)(mPosition.x + (mSingleSpriteWidth * 0.5f)) / TILE_WIDTH;
-	int footPosition = (int)(mPosition.y + mSingleSpriteHeight) / TILE_HEIGHT;
-	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0)
+
+	//Adds Gravity Force
+	if (gravityEnabled)
 	{
-		//Adds Gravity Force
 		AddGravity(deltaTime);
 		mCanJump = false;
+
 	}
 	else
 	{

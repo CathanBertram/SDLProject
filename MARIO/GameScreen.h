@@ -1,6 +1,8 @@
 #pragma once
 #include "Main.h"
 #include "TileMap.h"
+#include "GameObject.h"
+#include "Collisions.h"
 
 class Tile;
 class TileMap;
@@ -13,6 +15,7 @@ public:
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
+	bool CheckMapColl(GameObject* obj);
 
 	vector<Tile*> tileMap;
 	TileMap* map;
