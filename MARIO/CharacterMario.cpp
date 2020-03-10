@@ -1,6 +1,6 @@
 #include "CharacterMario.h"
 
-CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, map, startFace, gravity)
+CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, startFace, gravity)
 {
 	mRenderer = renderer;
 

@@ -12,15 +12,6 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, std::string filePath)
 GameScreenLevel1::~GameScreenLevel1()
 {
 	mBackgroundTexture = NULL;
-	delete mario;
-	mario = NULL;
-	delete luigi;
-	luigi = NULL;
-	delete mPowBlock;
-	mPowBlock = NULL;
-	mKoopas.clear();
-	mCoins.clear();
-	tileMap.clear();
 }
 
 void GameScreenLevel1::Render()
@@ -32,7 +23,10 @@ void GameScreenLevel1::Render()
 	}
 	mario->Render();
 	luigi->Render();
-	mPowBlock->Render();
+	for (unsigned int i = 0; i < mPowBlock.size(); i++)
+	{
+		mPowBlock[i]->Render();
+	}
 	for (unsigned int i = 0; i < mKoopas.size(); i++)
 	{
 		mKoopas[i]->Render();
@@ -83,34 +77,38 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 void GameScreenLevel1::UpdatePowBlock(float deltaTime)
 {
-	if (Collisions::Instance()->Box(mario->GetCollisionBox(), mPowBlock->GetCollisionBox()))
+	for (unsigned int i = 0; i < mPowBlock.size(); i++)
 	{
-		if (mPowBlock->IsAvailable())
+
+		if (Collisions::Instance()->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 		{
-			if (mario->IsJumping())
+			if (mPowBlock[i]->IsAvailable())
 			{
-				DoScreenshake();
-				mPowBlock->TakeAHit();
-				mario->CancelJump();
-				for (unsigned int i = 0; i < mKoopas.size(); i++)
+				if (mario->IsJumping())
 				{
-					mKoopas[i]->Jump(deltaTime);
+					DoScreenshake();
+					mPowBlock[i]->TakeAHit();
+					mario->CancelJump();
+					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					{
+						mKoopas[i]->Jump(deltaTime);
+					}
 				}
 			}
 		}
-	}
-	if (Collisions::Instance()->Box(luigi->GetCollisionBox(), mPowBlock->GetCollisionBox()))
-	{
-		if (mPowBlock->IsAvailable())
+		if (Collisions::Instance()->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 		{
-			if (luigi->IsJumping())
+			if (mPowBlock[i]->IsAvailable())
 			{
-				DoScreenshake();
-				mPowBlock->TakeAHit();
-				luigi->CancelJump();
-				for (unsigned int i = 0; i < mKoopas.size(); i++)
+				if (luigi->IsJumping())
 				{
-					mKoopas[i]->Jump(deltaTime);
+					DoScreenshake();
+					mPowBlock[i]->TakeAHit();
+					luigi->CancelJump();
+					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					{
+						mKoopas[i]->Jump(deltaTime);
+					}
 				}
 			}
 		}
@@ -157,20 +155,6 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 	}
 }
 
-void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
-{
-	CharacterKoopa* koopaCharacter;
-	koopaCharacter = new CharacterKoopa(mRenderer, "Images/KoopaSheet.png", position, mLevelMap, direction, true, speed);
-	mKoopas.push_back(koopaCharacter);
-}
-
-void GameScreenLevel1::CreateCoin(Vector2D position)
-{
-	//Coin* coin;
-	//coin = new Coin(mRenderer, "Images/CoinSheet.png", position);
-	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
-}
-
 bool GameScreenLevel1::SetUpLevel()
 {
 	std::cerr << "yes" << std::endl;
@@ -182,9 +166,7 @@ bool GameScreenLevel1::SetUpLevel()
 	}
 	SetLevelMap();
 	CreateCoin(Vector2D(200, 96));
-	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", Vector2D(64, 330), mLevelMap, FACING_RIGHT, true);
-	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", Vector2D(448, 330), mLevelMap, FACING_RIGHT, true);
-	mPowBlock = new PowBlock(mRenderer, mLevelMap);
+	//mPowBlock = new PowBlock(mRenderer, mLevelMap);
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
 

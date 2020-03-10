@@ -3,6 +3,12 @@
 #include "TileMap.h"
 #include "GameObject.h"
 #include "Collisions.h"
+#include "Coin.h"
+#include "Character.h"
+#include "CharacterLuigi.h"
+#include "CharacterMario.h"
+#include "CharacterKoopa.h"
+#include "PowBlock.h"
 
 class Tile;
 class TileMap;
@@ -20,6 +26,17 @@ public:
 
 	vector<Tile*> tileMap;
 	TileMap* map;
+
+	CharacterMario* mario;
+	CharacterLuigi* luigi;
+	vector<CharacterKoopa*> mKoopas;
+	vector<Coin*> mCoins;
+	vector<PowBlock*> mPowBlock;
+
+	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreateCoin(Vector2D position);
+	void CreateMario(Vector2D position);
+	void CreateLuigi(Vector2D position);
 
 protected:
 	SDL_Renderer* mRenderer;

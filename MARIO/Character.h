@@ -6,7 +6,7 @@ class Texture2D;
 class Character : public GameObject
 {
 public:
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity);
+	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity);
 	~Character();
 
 	virtual void Render();

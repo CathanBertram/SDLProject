@@ -1,8 +1,9 @@
 #include "PowBlock.h"
 
-PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
+PowBlock::PowBlock(SDL_Renderer* renderer, Vector2D pos)
 {
 	mRenderer = renderer;
+	mPosition = pos;
 
 	string imagePath = "Images/PowBlock.png";
 	mTexture = new Texture2D(mRenderer);
@@ -11,8 +12,6 @@ PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
 		cout << "Failed To load Texture: " << imagePath << endl;
 		return;
 	}
-
-	mLevelMap = map;
 
 	mSingleSpriteWidth = mTexture->GetWidth() / 3;
 	mSingleSpriteHeight = mTexture->GetHeight();

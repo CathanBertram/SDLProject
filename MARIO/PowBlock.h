@@ -6,7 +6,7 @@
 class PowBlock
 {
 public:
-	PowBlock(SDL_Renderer* renderer, LevelMap* map);
+	PowBlock(SDL_Renderer* renderer, Vector2D pos);
 	~PowBlock();
 
 	void Render();

@@ -19,8 +19,15 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 GameScreen::~GameScreen()
 {
 	mRenderer = NULL;
-	delete map;
-	map = NULL;
+	delete mario;
+	mario = NULL;
+	delete luigi;
+	luigi = NULL;
+	
+	mKoopas.clear();
+	mCoins.clear();
+	tileMap.clear();
+	mPowBlock.clear();
 }
 
 void GameScreen::Render()
@@ -49,6 +56,31 @@ bool GameScreen::CheckMapColl(GameObject* obj)
 	}
 	return false;
 }
+
+void GameScreen::CreateCoin(Vector2D position)
+{
+	//Coin* coin;
+	//coin = new Coin(mRenderer, "Images/CoinSheet.png", position);
+	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
+}
+
+void GameScreen::CreateMario(Vector2D position)
+{
+	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", position, FACING_RIGHT, true);
+}
+
+void GameScreen::CreateLuigi(Vector2D position)
+{
+	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", position, FACING_LEFT, true);
+}
+
+void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)
+{
+	CharacterKoopa* koopaCharacter;
+	koopaCharacter = new CharacterKoopa(mRenderer, "Images/KoopaSheet.png", position, direction, true, speed);
+	mKoopas.push_back(koopaCharacter);
+}
+
 
 void GameScreen::DoScreenshake()
 {

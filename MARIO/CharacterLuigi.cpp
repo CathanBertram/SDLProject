@@ -1,6 +1,6 @@
 #include "CharacterLuigi.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, map, startFace, gravity)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, startFace, gravity)
 {
 	mRenderer = renderer;
 	mSingleSpriteWidth = mTexture->GetWidth() / 12;

@@ -5,7 +5,7 @@
 class CharacterMario : public Character
 {
 public:
-	CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map, FACING startFace, bool gravity);
+	CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity);
 	~CharacterMario();
 
 	void Update(float deltaTime, SDL_Event e);
