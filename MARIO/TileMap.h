@@ -9,7 +9,7 @@ class GameScreen;
 class TileMap
 {
 public:
-	TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath);
+	TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath, GameScreen* screen);
 	~TileMap();
 
 	int GetTileAt(unsigned int h, unsigned int w);
@@ -19,6 +19,8 @@ public:
 	void LoadLevel(std::string levelToLoad);
 
 	vector<Tile*> tileMap;
+
+	GameScreen* tempScreen;
 
 private:
 	SDL_Renderer* mRenderer;

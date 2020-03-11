@@ -1,10 +1,11 @@
 #include "TileMap.h"
 #include "GameScreen.h"
 
-TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath)
+TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath, GameScreen* screen)
 {
 	mRenderer = renderer;
 	LoadLevel(imagePath);
+	tempScreen = screen;
 }
 
 TileMap::~TileMap()
@@ -58,12 +59,13 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Mario
-			CreateMario(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
+			tempScreen->CreateMario(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 4:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Luigi
+			tempScreen->CreateLuigi(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 5:
 			//Create Blank Tile

@@ -13,7 +13,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 		delete map;
 		map = NULL;
 	}
-	map = new TileMap(tileMap, mRenderer, filePath);
+	map = new TileMap(tileMap, mRenderer, filePath, this);
 }
 
 GameScreen::~GameScreen()
@@ -66,11 +66,13 @@ void GameScreen::CreateCoin(Vector2D position)
 
 void GameScreen::CreateMario(Vector2D position)
 {
+	CharacterMario* mario;
 	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", position, FACING_RIGHT, true);
 }
 
 void GameScreen::CreateLuigi(Vector2D position)
 {
+	CharacterLuigi* luigi;
 	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", position, FACING_LEFT, true);
 }
 

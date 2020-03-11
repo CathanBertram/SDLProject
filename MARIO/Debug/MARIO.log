@@ -12,28 +12,29 @@ D:\GITHUB\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing
   TileMap.cpp
 D:\GITHUB\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
 D:\GITHUB\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(47,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(47,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(51,90): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(51,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(55,92): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(55,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(59,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(59,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(61,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(61,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(61,16): error C2352: 'GameScreen::CreateMario': illegal call of non-static member function
-D:\GITHUB\SDLProject\MARIO\GameScreen.h(38): message : see declaration of 'GameScreen::CreateMario'
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(65,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(65,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(70,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(70,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(75,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(75,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(80,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(80,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(85,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(85,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(90,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(48,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(48,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(52,90): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(52,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(56,92): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(56,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(60,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(60,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(62,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(62,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(66,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(66,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(68,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(68,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(72,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(72,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(77,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(77,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(82,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(82,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(87,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(87,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(92,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-D:\GITHUB\SDLProject\MARIO\TileMap.cpp(90,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\SDLProject\MARIO\TileMap.cpp(92,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
