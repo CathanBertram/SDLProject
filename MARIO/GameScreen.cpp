@@ -14,6 +14,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 		map = NULL;
 	}
 	map = new TileMap(tileMap, mRenderer, filePath, this);
+	std::cerr << " yes papi" << std::endl;
 }
 
 GameScreen::~GameScreen()

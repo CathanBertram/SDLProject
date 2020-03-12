@@ -115,7 +115,7 @@ void Update()
 			gameScreenManager->ChangeScreen(SCREEN_LEVEL1);
 		}
 	}
-	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
+ 	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
 	gOldTime = newTime;
 	return;
 }

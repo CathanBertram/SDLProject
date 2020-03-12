@@ -4,8 +4,9 @@
 TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath, GameScreen* screen)
 {
 	mRenderer = renderer;
-	LoadLevel(imagePath);
 	tempScreen = screen;
+	LoadLevel(imagePath);
+	std::cerr << "hello" << std::endl;
 }
 
 TileMap::~TileMap()
@@ -71,6 +72,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Koopa
+			tempScreen->CreateKoopa(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), FACING_LEFT, KOOPA_SPEED);
 			break;
 		case 6:
 			//Create Blank Tile
@@ -81,6 +83,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Coin
+			tempScreen->CreateCoin(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 8:
 			//Create Blank Tile

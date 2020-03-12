@@ -45,6 +45,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		ShakeScreen(deltaTime);
 	}
+
 	mPos = mario->GetPosition();
 	lPos = luigi->GetPosition();
 	mario->Update(deltaTime, e);
