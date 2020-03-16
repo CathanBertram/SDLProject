@@ -11,6 +11,7 @@ TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imageP
 
 TileMap::~TileMap()
 {
+	//Delete Vectors
 }
 
 int TileMap::GetTileAt(unsigned int h, unsigned int w)
@@ -33,7 +34,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		std::cerr << "Could Not Open Level File" << std::endl;
 		return;
 	}
-
+	//Read In Map Height And Width
 	inFile >> levelWidth;
 	inFile >> levelHeight;
 
@@ -41,7 +42,10 @@ void TileMap::LoadLevel(std::string levelToLoad)
 	int x = 0, y = 0;
 	while (!inFile.eof())
 	{
+		//Read In Type Of File
 		inFile >> temp;
+
+		//Create Tiles
 		switch (temp)
 		{
 		case 0:
@@ -60,6 +64,8 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Mario
+
+			//Assign Position Variable For Game Objects
 			tempScreen->CreateMario(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 4:

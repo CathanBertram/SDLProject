@@ -15,16 +15,24 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	}
 	map = new TileMap(tileMap, mRenderer, filePath, this);
 	std::cerr << " yes papi" << std::endl;
+	
+
+	//Create Mario With map->marioPos
+
+	//For vector coinPos.size
+	//Create Coin With vector coinPos
 }
 
 GameScreen::~GameScreen()
 {
+	//Delete Character Variables
 	mRenderer = NULL;
 	delete mario;
 	mario = NULL;
 	delete luigi;
 	luigi = NULL;
 	
+	//Clear Vectors
 	mKoopas.clear();
 	mCoins.clear();
 	tileMap.clear();
