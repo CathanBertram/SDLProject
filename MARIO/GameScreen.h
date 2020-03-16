@@ -27,16 +27,11 @@ public:
 	vector<Tile*> tileMap;
 	TileMap* map;
 
-	CharacterMario* mario;
-	CharacterLuigi* luigi;
-	vector<CharacterKoopa*> mKoopas;
-	vector<Coin*> mCoins;
-	vector<PowBlock*> mPowBlock;
 
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreatePowBlock(Vector2D position);
 	void CreateCoin(Vector2D position);
-	void CreateMario(Vector2D position);
-	void CreateLuigi(Vector2D position);
+	void WriteScore();
 
 protected:
 	SDL_Renderer* mRenderer;
@@ -47,5 +42,15 @@ protected:
 
 	void DoScreenshake();
 	void ShakeScreen(float deltaTime);
+
+	CharacterMario* mario;
+	CharacterLuigi* luigi;
+	vector<CharacterKoopa*> mKoopas;
+	vector<Coin*> mCoins;
+	vector<PowBlock*> mPowBlock;
+
+	int score;
+	int highScore;
+	string scoreStr;
 };
 

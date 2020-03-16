@@ -2,16 +2,12 @@
 
 CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : Character(renderer, imagePath, startPosition, startFace, gravity)
 {
-	mRenderer = renderer;
-
 	mSingleSpriteWidth = mTexture->GetWidth() / 12;
 	mSingleSpriteHeight = mTexture->GetHeight() / 3;
 }
 
 CharacterMario::~CharacterMario()
 {
-	delete  mRenderer;
-	mRenderer = NULL;
 }
 
 void CharacterMario::Update(float deltaTime, SDL_Event e) 

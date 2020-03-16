@@ -9,12 +9,13 @@ GameObject::GameObject(SDL_Renderer* renderer, std::string imagePath, Vector2D s
 	mCollisionRadius = 15.0f;
 	frame = 1;
 	gravityEnabled = gravity;
+	mCircle = Circle2D(mTexture->GetWidth() / 2, mPosition);
 }
 
 GameObject::~GameObject()
 {
-	delete mRenderer;
 	mRenderer = NULL;
+ 	delete mRenderer;
 	delete mTexture;
 }
 

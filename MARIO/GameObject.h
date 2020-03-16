@@ -21,6 +21,7 @@ public:
 	{
 		return Rect2D(mPosition.x, mPosition.y, mSingleSpriteWidth, mSingleSpriteHeight);
 	};
+	Circle2D GetCollisionCircle() { return mCircle; }
 	float GetCollisionRadius() {
 		return mCollisionRadius;
 	}

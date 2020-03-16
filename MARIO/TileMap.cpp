@@ -1,17 +1,18 @@
 #include "TileMap.h"
 #include "GameScreen.h"
 
-TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath, GameScreen* screen)
+TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath)
 {
 	mRenderer = renderer;
-	tempScreen = screen;
 	LoadLevel(imagePath);
-	std::cerr << "hello" << std::endl;
 }
 
 TileMap::~TileMap()
 {
 	//Delete Vectors
+	koopaPos.clear();
+	powBlockPos.clear();
+	coinPos.clear();
 }
 
 int TileMap::GetTileAt(unsigned int h, unsigned int w)
@@ -63,33 +64,32 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		case 3:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			//Create Mario
-
 			//Assign Position Variable For Game Objects
-			tempScreen->CreateMario(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
+			marioPos = Vector2D(x * TILE_WIDTH, (y * TILE_HEIGHT) - 16);
 			break;
 		case 4:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Luigi
-			tempScreen->CreateLuigi(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
+			luigiPos = Vector2D(x * TILE_WIDTH, (y * TILE_HEIGHT) - 16);
 			break;
 		case 5:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Koopa
-			tempScreen->CreateKoopa(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), FACING_LEFT, KOOPA_SPEED);
+			koopaPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 6:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create PowBlock
+			powBlockPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 7:
 			//Create Blank Tile
 			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Coin
-			tempScreen->CreateCoin(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
+			coinPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 8:
 			//Create Blank Tile

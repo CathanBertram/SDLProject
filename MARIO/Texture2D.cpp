@@ -25,8 +25,6 @@ bool Texture2D::LoadFromFile(std::string path)
 
 	if (pSurface != NULL)
 	{
-		SDL_SetColorKey(pSurface, SDL_TRUE, SDL_MapRGB(pSurface->format, 0, 0, 0));
-
 		mTexture = SDL_CreateTextureFromSurface(mRenderer, pSurface);
 		if (mTexture == NULL)
 		{

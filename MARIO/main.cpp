@@ -87,7 +87,7 @@ bool InitSDL()
 
 void Render()
 {
-	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
+	//SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 	SDL_RenderClear(gRenderer);
 
 	gameScreenManager->Render();
@@ -109,6 +109,7 @@ void Update()
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_ESCAPE:
+			GameScreen::WriteScore();
 			quit = true;
 			return;
 		case SDLK_SPACE:

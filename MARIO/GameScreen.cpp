@@ -1,3 +1,4 @@
+#include <sstream>
 #include "GameScreen.h"
 
 GameScreen::GameScreen(SDL_Renderer* renderer)
@@ -13,14 +14,35 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 		delete map;
 		map = NULL;
 	}
-	map = new TileMap(tileMap, mRenderer, filePath, this);
-	std::cerr << " yes papi" << std::endl;
-	
+	map = new TileMap(tileMap, mRenderer, filePath);
+	std::cerr << map->GetMarioPos().x << "    " << map->GetMarioPos().y << std::endl;
+	std::cerr << map->GetLuigiPos().x << "    " << map->GetLuigiPos().y << std::endl;
 
-	//Create Mario With map->marioPos
-
-	//For vector coinPos.size
-	//Create Coin With vector coinPos
+	//Create Characters
+	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", map->GetMarioPos(), FACING_RIGHT, true);
+	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", map->GetLuigiPos(), FACING_RIGHT, true);
+	//Create Koopas
+	for (unsigned i = 0; i < map->GetKoopaSize(); i++)
+	{
+		CreateKoopa(map->GetKoopaPos(i), FACING_LEFT, KOOPA_SPEED);
+	}
+	//Create PowBlocks
+	for (unsigned i = 0; i < map->GetPowBlockSize(); i++)
+	{
+		CreatePowBlock(map->GetPowBlockPos(i));
+	}
+	//Create Coins
+	for (unsigned i = 0; i < map->GetCoinSize(); i++)
+	{
+		CreateCoin(map->GetCoinPos(i));
+	}
+	score = 0;
+	ifstream highscoreDoc;
+	highscoreDoc.open("Score/score.txt");
+	getline(highscoreDoc, scoreStr);
+	stringstream scoreStream(scoreStr);
+	scoreStream >> highScore;
+	highscoreDoc.close();
 }
 
 GameScreen::~GameScreen()
@@ -31,7 +53,11 @@ GameScreen::~GameScreen()
 	mario = NULL;
 	delete luigi;
 	luigi = NULL;
-	
+
+	//Write Highscore To File
+
+	WriteScore();
+
 	//Clear Vectors
 	mKoopas.clear();
 	mCoins.clear();
@@ -73,16 +99,14 @@ void GameScreen::CreateCoin(Vector2D position)
 	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
 }
 
-void GameScreen::CreateMario(Vector2D position)
+void GameScreen::WriteScore()
 {
-	CharacterMario* mario;
-	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", position, FACING_RIGHT, true);
-}
-
-void GameScreen::CreateLuigi(Vector2D position)
-{
-	CharacterLuigi* luigi;
-	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", position, FACING_LEFT, true);
+	if (score > highScore)
+	{
+		ofstream highscoreDoc("Score/score.txt");
+		highscoreDoc << score;
+		highscoreDoc.close();
+	}
 }
 
 void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)
@@ -90,6 +114,11 @@ void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)
 	CharacterKoopa* koopaCharacter;
 	koopaCharacter = new CharacterKoopa(mRenderer, "Images/KoopaSheet.png", position, direction, true, speed);
 	mKoopas.push_back(koopaCharacter);
+}
+
+void GameScreen::CreatePowBlock(Vector2D position)
+{
+	mPowBlock.push_back(new PowBlock(mRenderer, position));
 }
 
 

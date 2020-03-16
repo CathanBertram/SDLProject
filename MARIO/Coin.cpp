@@ -2,9 +2,6 @@
 
 Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
-	mRenderer = renderer;
-	mTexture = new Texture2D(mRenderer);
-    mTexture->LoadFromFile(imagePath);
 	mPosition = startPosition;
 	mCollisionRadius = 15.0f;
 	frame = 0;
@@ -15,8 +12,6 @@ Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition
 
 Coin::~Coin()
 {
-	delete mRenderer;
-	mRenderer = NULL;
 }
 
 void Coin::Render()

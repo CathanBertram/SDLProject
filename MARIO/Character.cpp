@@ -3,9 +3,6 @@
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
-	mRenderer = renderer;
-	mTexture = new Texture2D(mRenderer);
-	mTexture->LoadFromFile(imagePath);
 	mPosition = startPosition;
 	mMovingLeft = false;
 	mMovingRight = false;
@@ -18,8 +15,6 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 
 Character::~Character()
 {
-	delete mRenderer;
-	mRenderer = NULL;
 }
 
 void Character::Render()

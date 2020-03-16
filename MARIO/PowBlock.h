@@ -19,6 +19,7 @@ public:
 	{
 		return mNumberOfHitsLeft > 0;
 	}
+	bool IsCollidable() { return collidable; }
 
 private:
 	SDL_Renderer* mRenderer;
@@ -30,5 +31,7 @@ private:
 	float mSingleSpriteHeight;
 
 	int mNumberOfHitsLeft;
+
+	bool collidable;
 };
 

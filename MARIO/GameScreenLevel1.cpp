@@ -40,7 +40,7 @@ void GameScreenLevel1::Render()
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
-	UpdateEnemies(deltaTime, e);
+	//UpdateEnemies(deltaTime, e);
 	if (mScreenshake)
 	{
 		ShakeScreen(deltaTime);
@@ -74,6 +74,15 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		mCoins[i]->Update(deltaTime, e);
 	}
 	UpdatePowBlock(deltaTime);
+	for (int i = 0; i < mCoins.size(); i++)
+	{
+		if (Collisions::Instance()->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+		{
+			score += 100;
+			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
+		}
+	}
+	std::cerr << score << std::endl;
 }
 
 void GameScreenLevel1::UpdatePowBlock(float deltaTime)

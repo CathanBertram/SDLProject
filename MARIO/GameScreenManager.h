@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include"Commons.h"
+#include "GameScreen.h"
 #include "GameScreenIntro.h"
 #include "GameScreenLevel1.h"
 #include "TileMap.h"
