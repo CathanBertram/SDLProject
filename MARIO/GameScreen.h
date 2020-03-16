@@ -31,7 +31,6 @@ public:
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 	void CreatePowBlock(Vector2D position);
 	void CreateCoin(Vector2D position);
-	void WriteScore();
 
 protected:
 	SDL_Renderer* mRenderer;
@@ -48,9 +47,5 @@ protected:
 	vector<CharacterKoopa*> mKoopas;
 	vector<Coin*> mCoins;
 	vector<PowBlock*> mPowBlock;
-
-	int score;
-	int highScore;
-	string scoreStr;
 };
 

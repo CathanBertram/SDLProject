@@ -15,8 +15,6 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 		map = NULL;
 	}
 	map = new TileMap(tileMap, mRenderer, filePath);
-	std::cerr << map->GetMarioPos().x << "    " << map->GetMarioPos().y << std::endl;
-	std::cerr << map->GetLuigiPos().x << "    " << map->GetLuigiPos().y << std::endl;
 
 	//Create Characters
 	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", map->GetMarioPos(), FACING_RIGHT, true);
@@ -36,13 +34,14 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	{
 		CreateCoin(map->GetCoinPos(i));
 	}
-	score = 0;
-	ifstream highscoreDoc;
-	highscoreDoc.open("Score/score.txt");
-	getline(highscoreDoc, scoreStr);
-	stringstream scoreStream(scoreStr);
-	scoreStream >> highScore;
-	highscoreDoc.close();
+	for (int i = 0; i < map->GetLevelHeight(); i++)
+	{
+		for (int j = 0; j < map->GetLevelWidth(); j++)
+		{
+			std::cout << map->GetTileAt(i, j);
+		}
+		std::cout << std::endl;
+	}
 }
 
 GameScreen::~GameScreen()
@@ -53,10 +52,6 @@ GameScreen::~GameScreen()
 	mario = NULL;
 	delete luigi;
 	luigi = NULL;
-
-	//Write Highscore To File
-
-	WriteScore();
 
 	//Clear Vectors
 	mKoopas.clear();
@@ -94,19 +89,7 @@ bool GameScreen::CheckMapColl(GameObject* obj)
 
 void GameScreen::CreateCoin(Vector2D position)
 {
-	//Coin* coin;
-	//coin = new Coin(mRenderer, "Images/CoinSheet.png", position);
 	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
-}
-
-void GameScreen::WriteScore()
-{
-	if (score > highScore)
-	{
-		ofstream highscoreDoc("Score/score.txt");
-		highscoreDoc << score;
-		highscoreDoc.close();
-	}
 }
 
 void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)

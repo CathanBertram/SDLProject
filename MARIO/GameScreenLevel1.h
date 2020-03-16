@@ -30,7 +30,5 @@ private:
 	Vector2D mPos;
 	Vector2D lPos;
 	bool SetUpLevel();
-	void SetLevelMap();
-	LevelMap* mLevelMap;
 };
 

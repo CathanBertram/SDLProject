@@ -5,7 +5,6 @@
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, std::string filePath) : GameScreen(renderer, filePath)
 {
-	mLevelMap = NULL;
 	SetUpLevel();
 }
 
@@ -78,11 +77,9 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		if (Collisions::Instance()->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 		{
-			score += 100;
 			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
 		}
 	}
-	std::cerr << score << std::endl;
 }
 
 void GameScreenLevel1::UpdatePowBlock(float deltaTime)
@@ -167,43 +164,15 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 
 bool GameScreenLevel1::SetUpLevel()
 {
-	std::cerr << "yes" << std::endl;
 	mBackgroundTexture = new Texture2D(mRenderer);
 	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundLevel.png"))
 	{
 		std::cout << "Failed to load background texture!";
 		return false;
 	}
-	SetLevelMap();
-	CreateCoin(Vector2D(200, 96));
-	//mPowBlock = new PowBlock(mRenderer, mLevelMap);
-	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
 
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
 	return true;
 }
 
-void GameScreenLevel1::SetLevelMap()
-{
-	int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0 },
-									{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
-	if (mLevelMap != NULL)
-	{
-		delete mLevelMap;
-	}
-	mLevelMap = new LevelMap(map);
-
-}

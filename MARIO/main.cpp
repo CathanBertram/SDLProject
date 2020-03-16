@@ -109,7 +109,6 @@ void Update()
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_ESCAPE:
-			GameScreen::WriteScore();
 			quit = true;
 			return;
 		case SDLK_SPACE:

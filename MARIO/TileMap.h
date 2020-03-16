@@ -19,6 +19,10 @@ public:
 	void LoadLevel(std::string levelToLoad);
 
 	vector<Tile*> tileMap;
+	vector<vector<int> > tileType;
+
+	int GetLevelHeight() { return levelHeight; }
+	int GetLevelWidth() { return levelWidth; }
 
 	Vector2D GetMarioPos() { return marioPos; }
 	Vector2D GetLuigiPos() { return luigiPos; }
