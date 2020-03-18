@@ -24,6 +24,14 @@ public:
 	void DisableLeftMovement() { leftMovement = false; }
 	void DisableRightMovement() { rightMovement = false; }
 
+	int GetNumOfMoves() { return numOfMoves; }
+	void IncreaseNumOfMoves() { numOfMoves++; }
+	void ResetNumOfMoves() { numOfMoves = 0; }
+
+	FACING GetFacing() { return mFacingDirection; }
+
+	void SetTempPos() { tempPos = mPosition; }
+
 protected:
 	bool mMovingLeft;
 	bool mMovingRight;
@@ -38,9 +46,12 @@ protected:
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
+	int numOfMoves;
 
 	bool leftMovement;
 	bool rightMovement;
+
+	Vector2D tempPos = mPosition;
 
 	FACING mFacingDirection;
 	LevelMap* mCurrentLevelMap;

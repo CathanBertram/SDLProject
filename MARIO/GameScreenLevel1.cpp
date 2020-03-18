@@ -50,20 +50,24 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	mPos = mario->GetPosition();
 	lPos = luigi->GetPosition();
+
+	ObjectCollChecks(mario, deltaTime);
+	ObjectCollChecks(luigi, deltaTime);
+
 	mario->Update(deltaTime, e);
 	luigi->Update(deltaTime, e);
+
 	/*if (Collisions::Instance()->Circle(Circle2D(mario->GetCollisionRadius(), mario->GetPosition()), Circle2D(luigi->GetCollisionRadius(), luigi->GetPosition())))
 	{
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
 	}*/
-	ObjectCollChecks(mario, deltaTime);
 
-	if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
+	/*if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
 	{
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
-	}
+	}*/
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);

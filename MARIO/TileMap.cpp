@@ -17,7 +17,6 @@ TileMap::~TileMap()
 
 int TileMap::GetTileAt(unsigned int h, unsigned int w)
 {
-	std::cerr << h << "   " << w << std::endl;
 	if (h < levelHeight && w < levelWidth)
 	{
 		return tileMap.at(h).at(w)->collidable;

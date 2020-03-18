@@ -30,4 +30,7 @@ using namespace std;
 #define JUMP_FORCE_DECREMENT 1000.0f
 
 #define KOOPA_SPEED 96.0f
+#define PLAYER_SPEED 250.0f
+
+#define NUMBER_OF_MOVEMENTS 10
 #endif

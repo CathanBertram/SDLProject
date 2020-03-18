@@ -125,7 +125,9 @@ bool GameScreen::CheckMapCollLeft(Character* obj, float deltaTime)
 {
 	if (map != NULL)
 	{
-		if (map->GetTileAt(obj->GetPosition().y + (obj->GetSingleHeight() / 2)/ TILE_HEIGHT, obj->CheckLeftMovement(deltaTime).x / TILE_WIDTH) == true)
+		if (map->GetTileAt(obj->GetPosition().y / TILE_HEIGHT, obj->CheckLeftMovement(deltaTime).x / TILE_WIDTH) == true ||
+			map->GetTileAt((obj->GetPosition().y + (obj->GetSingleHeight() /2 ))/ TILE_HEIGHT, obj->CheckLeftMovement(deltaTime).x / TILE_WIDTH) == true ||
+			map->GetTileAt((obj->GetPosition().y + (obj->GetSingleHeight() - 1)) / TILE_HEIGHT, obj->CheckLeftMovement(deltaTime).x / TILE_WIDTH) == true)
 		{
 			return true;
 		}
@@ -138,7 +140,9 @@ bool GameScreen::CheckMapCollRight(Character* obj, float deltaTime)
 {
 	if (map != NULL)
 	{
-		if (map->GetTileAt((obj->GetPosition().y + obj->GetSingleHeight() / 2) / TILE_HEIGHT, (obj->CheckRightMovement(deltaTime).x + obj->GetSingleWidth()) / TILE_WIDTH) == true)
+		if (map->GetTileAt(obj->GetPosition().y / TILE_HEIGHT, (obj->CheckRightMovement(deltaTime).x + obj->GetSingleWidth()) / TILE_WIDTH) == true ||
+			map->GetTileAt((obj->GetPosition().y + (obj->GetSingleHeight() / 2 )) / TILE_HEIGHT, (obj->CheckRightMovement(deltaTime).x + obj->GetSingleWidth()) / TILE_WIDTH) == true ||
+			map->GetTileAt((obj->GetPosition().y + (obj->GetSingleHeight() - 1)) / TILE_HEIGHT, (obj->CheckRightMovement(deltaTime).x + obj->GetSingleWidth()) / TILE_WIDTH) == true)
 		{
 			return true;
 		}
@@ -175,24 +179,38 @@ bool GameScreen::CheckMapCollDown(Character* obj)
 
 void GameScreen::ObjectCollChecks(Character* obj, float deltaTime)
 {
-	//Check Collision To The Left
-	if (CheckMapCollLeft(obj, deltaTime) == true)
+	obj->ResetNumOfMoves();
+	obj->SetTempPos();
+	FACING facing = obj->GetFacing();
+	if (facing == FACING_LEFT)
 	{
-		obj->DisableLeftMovement();
+		//Check Collision To The Left
+		for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
+		{
+			if (CheckMapCollLeft(obj, deltaTime) == true)
+			{
+				break;
+			}
+			else
+			{
+				obj->IncreaseNumOfMoves();
+			}
+		}
 	}
-	else
+	else if (facing == FACING_RIGHT)
 	{
-		obj->EnableLeftMovement();
-	}
-
-	//Check Collision To The Right
-	if (CheckMapCollRight(obj, deltaTime) == true)
-	{
-		obj->DisableRightMovement();
-	}
-	else
-	{
-		obj->EnableRightMovement();
+		for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
+		{
+			//Check Collision To The Right
+			if (CheckMapCollRight(obj, deltaTime) == true)
+			{
+				break;
+			}
+			else
+			{
+				obj->IncreaseNumOfMoves();
+			}
+		}
 	}
 
 	//Check Collision Up
@@ -202,7 +220,7 @@ void GameScreen::ObjectCollChecks(Character* obj, float deltaTime)
 	}
 
 	//Check Collision Down
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
 	{
 		if (CheckMapCollDown(obj) == true)
 		{

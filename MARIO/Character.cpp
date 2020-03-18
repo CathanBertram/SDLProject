@@ -7,7 +7,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mPosition = startPosition;
 	mMovingLeft = false;
 	mMovingRight = false;
-	speed = 250;
+	speed = PLAYER_SPEED;
 	mCollisionRadius = 15.0f;
 	mFacingDirection = startFace;
 
@@ -36,7 +36,6 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-
 	//Adds Gravity Force
 	/*if (gravityEnabled)
 	{
@@ -107,32 +106,30 @@ void Character::Jump()
 
 void Character::MoveLeft(float deltaTime)
 {
-	if (leftMovement = true)
+	for (int i = 0; i < numOfMoves; i++)
 	{
 		mFacingDirection = FACING_LEFT;
-		mPosition.x -= speed* deltaTime;
+		mPosition.x -= (speed / NUMBER_OF_MOVEMENTS) * deltaTime;
 	}
 }
 
 void Character::MoveRight(float deltaTime)
 {
-	if (rightMovement = true)
+	for (int i = 0; i < numOfMoves; i++)
 	{
 		mFacingDirection = FACING_RIGHT;
-		mPosition.x += speed* deltaTime;
+		mPosition.x += (speed / NUMBER_OF_MOVEMENTS) * deltaTime;
 	}
 }
 
 Vector2D Character::CheckLeftMovement(float deltaTime)
 {
-	Vector2D tempPos = mPosition;
-	tempPos.x -= speed * deltaTime;
-	return Vector2D();
+	tempPos.x -= (speed / NUMBER_OF_MOVEMENTS) * deltaTime;
+	return tempPos;
 }
 
 Vector2D Character::CheckRightMovement(float deltaTime)
 {
-	Vector2D tempPos = mPosition;
-	tempPos.x += speed * deltaTime;
-	return Vector2D();
+	tempPos.x += (speed / NUMBER_OF_MOVEMENTS) * deltaTime;
+	return tempPos;
 }
