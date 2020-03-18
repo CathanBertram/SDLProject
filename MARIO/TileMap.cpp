@@ -1,7 +1,7 @@
 #include "TileMap.h"
 #include "GameScreen.h"
 
-TileMap::TileMap(vector<Tile*> tiles, SDL_Renderer* renderer, std::string imagePath)
+TileMap::TileMap(vector<vector<Tile*> > tiles, SDL_Renderer* renderer, std::string imagePath)
 {
 	mRenderer = renderer;
 	LoadLevel(imagePath);
@@ -17,9 +17,10 @@ TileMap::~TileMap()
 
 int TileMap::GetTileAt(unsigned int h, unsigned int w)
 {
+	std::cerr << h << "   " << w << std::endl;
 	if (h < levelHeight && w < levelWidth)
 	{
-		return tileType.at(h).at(w);
+		return tileMap.at(h).at(w)->collidable;
 	}
 	else return NULL;
 }
@@ -43,7 +44,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 	inFile >> levelWidth;
 	inFile >> levelHeight;
 
-	vector<int> tempTile;
+	vector<Tile*> tempTile;
 	int temp;
 	int x = 0, y = 0;
 	while (!inFile.eof())
@@ -56,68 +57,68 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		{
 		case 0:
 			//Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			break;
 		case 1:
 			//Ground Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Ground.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
-			tempTile.push_back(1);
+			tempTile.push_back(new Tile(mRenderer, "Images/Ground.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
+			
 			break;
 		case 2:
 			//Bricks
-			tileMap.push_back(new Tile(mRenderer, "Images/BrickNew.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, true));
-			tempTile.push_back(1);
+			tempTile.push_back(new Tile(mRenderer, "Images/BrickNew.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, true));
+			
 			break;
 		case 3:
 			//Create Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			//Assign Position Variable For Game Objects
 			marioPos = Vector2D(x * TILE_WIDTH, (y * TILE_HEIGHT) - 16);
 			break;
 		case 4:
 			//Create Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			//Create Luigi
 			luigiPos = Vector2D(x * TILE_WIDTH, (y * TILE_HEIGHT) - 16);
 			break;
 		case 5:
 			//Create Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			//Create Koopa
 			koopaPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 6:
 			//Create Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			//Create PowBlock
 			powBlockPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 7:
 			//Create Blank Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
-			tempTile.push_back(0);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
 			//Create Coin
 			coinPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		case 8:
 			//Create Blank Tile
-			tempTile.push_back(0);
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
+			
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Win Flag
 			break;
 		case 9:
 			//Create Unbreakable Tile
-			tileMap.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
-			tempTile.push_back(1);
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
+			
 			break;
 		case 10:
 			//Create Question Tile
-			tempTile.push_back(0);
+			
 			break;
 		}
 		x++;
@@ -125,7 +126,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 		{
 			x = 0;
 			y++;
-			tileType.push_back(tempTile);
+			tileMap.push_back(tempTile);
 			//std::cerr << tempTile.size() << std::endl;
 			tempTile.clear();
 			//std::cerr << tempTile.size() << "   " << tileType.size() << std::endl;

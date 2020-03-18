@@ -26,7 +26,7 @@ using namespace std;
 
 #define INITIAL_JUMP_FORCE_SMALL 400.0f
 #define INITIAL_JUMP_FORCE 800.0f
-#define GRAVITY 300.0f
+#define GRAVITY 30.0f
 #define JUMP_FORCE_DECREMENT 1000.0f
 
 #define KOOPA_SPEED 96.0f

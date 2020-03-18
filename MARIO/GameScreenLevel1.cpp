@@ -18,7 +18,10 @@ void GameScreenLevel1::Render()
 	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
 	for (int i = 0; i < map->tileMap.size(); i++)
 	{
-		map->tileMap[i]->Render();
+		for (int j = 0; j < map->tileMap[i].size(); j++)
+		{
+			map->tileMap[i][j]->Render();
+		}
 	}
 	mario->Render();
 	luigi->Render();
@@ -54,15 +57,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
 	}*/
-	if (CheckMapColl(mario))
-	{
-		mario->SetPositionY(mPos);
-		mario->gravityEnabled = false;
-	}
-	else
-	{
-		mario->gravityEnabled = true;
-	}
+	ObjectCollChecks(mario, deltaTime);
+
 	if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
 	{
 		mario->SetPosition(mPos);

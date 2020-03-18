@@ -52,6 +52,11 @@ Vector2D GameObject::GetPosition()
 	return mPosition;
 }
 
+void GameObject::SetOldPos()
+{
+	oldPos = mPosition;
+}
+
 void GameObject::AddGravity(float deltaTime)
 {
 	if (mPosition.y < SCREEN_HEIGHT - 42)

@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Texture2D.h"
+#include "GameScreen.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
@@ -37,7 +38,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 {
 
 	//Adds Gravity Force
-	if (gravityEnabled)
+	/*if (gravityEnabled)
 	{
 		AddGravity(deltaTime);
 		mCanJump = false;
@@ -46,7 +47,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	else
 	{
 		mCanJump = true;
-	}
+	}*/
 
 	//Jump Force Change
 	if (mJumping)
@@ -106,12 +107,32 @@ void Character::Jump()
 
 void Character::MoveLeft(float deltaTime)
 {
-	mFacingDirection = FACING_LEFT;
-	mPosition.x -= speed* deltaTime;
+	if (leftMovement = true)
+	{
+		mFacingDirection = FACING_LEFT;
+		mPosition.x -= speed* deltaTime;
+	}
 }
 
 void Character::MoveRight(float deltaTime)
 {
-	mFacingDirection = FACING_RIGHT;
-	mPosition.x += speed* deltaTime;
+	if (rightMovement = true)
+	{
+		mFacingDirection = FACING_RIGHT;
+		mPosition.x += speed* deltaTime;
+	}
+}
+
+Vector2D Character::CheckLeftMovement(float deltaTime)
+{
+	Vector2D tempPos = mPosition;
+	tempPos.x -= speed * deltaTime;
+	return Vector2D();
+}
+
+Vector2D Character::CheckRightMovement(float deltaTime)
+{
+	Vector2D tempPos = mPosition;
+	tempPos.x += speed * deltaTime;
+	return Vector2D();
 }

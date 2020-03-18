@@ -22,9 +22,16 @@ public:
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
-	bool CheckMapColl(GameObject* obj);
+	bool CheckMapColl(Character* obj);
+	bool CheckMapCollV2(Character* obj);
+	bool CheckMapCollLR(Character* obj);
+	bool CheckMapCollLeft(Character* obj, float deltaTime);
+	bool CheckMapCollRight(Character* obj, float deltaTime);
+	bool CheckMapCollUp(Character* obj);
+	bool CheckMapCollDown(Character* obj);
+	void ObjectCollChecks(Character* obj, float deltaTime);
 
-	vector<Tile*> tileMap;
+	vector<vector<Tile*> > tileMap;
 	TileMap* map;
 
 

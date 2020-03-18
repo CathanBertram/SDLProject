@@ -16,6 +16,7 @@ public:
 	void SetPosition(Vector2D newPosition);
 	void SetPositionX(Vector2D newPosition);
 	void SetPositionY(Vector2D newPosition);
+	
 	Vector2D GetPosition();
 	Rect2D GetCollisionBox()
 	{
@@ -26,9 +27,15 @@ public:
 		return mCollisionRadius;
 	}
 
+	float GetSingleWidth() { return mSingleSpriteWidth; }
+	float GetSingleHeight() { return mSingleSpriteHeight; }
+
+	Vector2D GetOldPos() { return oldPos; }
+	void SetOldPos();
+
 	bool gravityEnabled;
-protected:
 	void AddGravity(float deltaTime);
+protected:
 
 	SDL_Renderer* mRenderer;
 	Vector2D mPosition;
@@ -43,6 +50,8 @@ protected:
 	float frame;
 	int slice; //Slice From Spritesheet
 	const int cFrameTime = 1; //Time For Anim Loop
+
+	Vector2D oldPos;
 
 };
 
