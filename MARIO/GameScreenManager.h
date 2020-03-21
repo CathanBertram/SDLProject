@@ -4,6 +4,7 @@
 #include "GameScreen.h"
 #include "GameScreenIntro.h"
 #include "GameScreenLevel1.h"
+#include "GameScreenLevel2.h"
 #include "TileMap.h"
 
 class GameScreen;
@@ -24,5 +25,6 @@ private:
 	GameScreen* mCurrentScreen;
 	GameScreenIntro* tempScreenIntro;
 	GameScreenLevel1* tempScreenL1;
+	GameScreenLevel2* tempScreenL2;
 };
 

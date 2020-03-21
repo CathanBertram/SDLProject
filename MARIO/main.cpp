@@ -10,7 +10,6 @@ bool InitSDL();
 void Render();
 void Update();
 
-GameScreenManager* gameScreenManager;
 Uint32 gOldTime;
 
 SDL_Window* gWindow = NULL;
@@ -25,7 +24,6 @@ int main(int argc, char* agrs[])
 	{
 		InitGameManager();
 		GameManager::Instance()->soundManager->PlayMusic("AUDIO/Mario.mp3");
-		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
 		//Game Loop
 		while (!quit)
@@ -47,14 +45,13 @@ void CloseSDL()
 	SDL_Quit();
 	SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;
-	delete gameScreenManager;
-	gameScreenManager = NULL;
 }
 
 void InitGameManager()
 {
 	GameManager::Instance()->collision = new Collisions();
 	GameManager::Instance()->soundManager = new SoundManager();
+	GameManager::Instance()->gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 }
 
 bool InitSDL()
@@ -106,7 +103,7 @@ void Render()
 	//SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
 	SDL_RenderClear(gRenderer);
 
-	gameScreenManager->Render();
+	GameManager::Instance()->gameScreenManager->Render();
 
 	SDL_RenderPresent(gRenderer);
 }
@@ -128,10 +125,10 @@ void Update()
 			quit = true;
 			return;
 		case SDLK_SPACE:
-			gameScreenManager->ChangeScreen(SCREEN_LEVEL1);
+			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL1);
 		}
 	}
- 	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
+	GameManager::Instance()->gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
 	gOldTime = newTime;
 	return;
 }

@@ -9,6 +9,7 @@
 #include "CharacterMario.h"
 #include "CharacterKoopa.h"
 #include "PowBlock.h"
+#include "Flag.h"
 
 class Tile;
 class TileMap;
@@ -30,6 +31,9 @@ public:
 	void CreatePowBlock(Vector2D position);
 	void CreateCoin(Vector2D position);
 
+	void UpdatePowBlock(float deltaTime);
+	void UpdateEnemies(float deltaTime, SDL_Event e);
+
 protected:
 	SDL_Renderer* mRenderer;
 	bool mScreenshake;
@@ -42,6 +46,7 @@ protected:
 
 	CharacterMario* mario;
 	CharacterLuigi* luigi;
+	Flag* flag;
 	vector<CharacterKoopa*> mKoopas;
 	vector<Coin*> mCoins;
 	vector<PowBlock*> mPowBlock;

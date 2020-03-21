@@ -109,6 +109,7 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			
 			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, false, false));
 			//Create Win Flag
+			flagPos = Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT);
 			break;
 		case 9:
 			//Create Unbreakable Tile

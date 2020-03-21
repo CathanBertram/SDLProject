@@ -21,9 +21,6 @@ public:
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
 
-	void UpdatePowBlock(float deltaTime);
-	void UpdateEnemies(float deltaTime, SDL_Event e);
-
 private:
 	Texture2D* mBackgroundTexture;
 

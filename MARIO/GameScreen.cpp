@@ -20,6 +20,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	//Create Characters
 	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", map->GetMarioPos(), FACING_RIGHT, true);
 	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", map->GetLuigiPos(), FACING_RIGHT, true);
+	flag = new Flag(mRenderer, "Images/Flag.png", map->GetFlagPos(), true);
 	//Create Koopas
 	for (unsigned i = 0; i < map->GetKoopaSize(); i++)
 	{
@@ -72,6 +73,85 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 void GameScreen::CreateCoin(Vector2D position)
 {
 	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
+}
+
+void GameScreen::UpdatePowBlock(float deltaTime)
+{
+	for (unsigned int i = 0; i < mPowBlock.size(); i++)
+	{
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		{
+			if (mPowBlock[i]->IsAvailable())
+			{
+				if (mario->IsJumping())
+				{
+					DoScreenshake();
+					mPowBlock[i]->TakeAHit();
+					mario->CancelJump();
+					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					{
+						mKoopas[i]->Jump(deltaTime);
+					}
+				}
+			}
+		}
+		if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		{
+			if (mPowBlock[i]->IsAvailable())
+			{
+				if (luigi->IsJumping())
+				{
+					DoScreenshake();
+					mPowBlock[i]->TakeAHit();
+					luigi->CancelJump();
+					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					{
+						mKoopas[i]->Jump(deltaTime);
+					}
+				}
+			}
+		}
+	}
+}
+
+void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
+{
+	if (!mKoopas.empty())
+	{
+		int enemyIndexToDelete = -1;
+		for (unsigned int i = 0; i < mKoopas.size(); i++)
+		{
+			if (mKoopas[i]->GetPosition().y > 0.0f)
+			{
+				if (mKoopas[i]->GetPosition().x < (float)(-mKoopas[i]->GetCollisionBox().w * 0.5f) ||
+					mKoopas[i]->GetPosition().x > SCREEN_WIDTH - (float)(mKoopas[i]->GetCollisionBox().w * 0.55f))
+				{
+					mKoopas[i]->SetAlive(false);
+					mKoopas[i]->Jump(deltaTime);
+				}
+			}
+
+			mKoopas[i]->Update(deltaTime, e);
+
+			if ((mKoopas[i]->GetPosition().y > 0.0f || mKoopas[i]->GetPosition().y <= 64.0f) && (mKoopas[i]->GetPosition().x < 64.0f || mKoopas[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
+			{
+				//Ignore Collisions if behind pipe
+				//mKoopas[i]->Jump(deltaTime);
+			}
+			else
+			{
+				if (GameManager::Instance()->collision->Circle(Circle2D(mKoopas[i]->GetCollisionRadius(), mKoopas[i]->GetPosition()), Circle2D(mario->GetCollisionRadius(), mario->GetPosition())))
+				{
+					//Set Mario To Dead
+				}
+			}
+
+			if (!mKoopas[i]->GetAlive())
+			{
+				enemyIndexToDelete = i;
+			}
+		}
+	}
 }
 
 void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)

@@ -1,20 +1,16 @@
-#include <iostream>
-#include "GameScreenLevel1.h"
-#include "Texture2D.h"
-#include "PowBlock.h"
+#include "GameScreenLevel2.h"
 #include "GameManager.h"
 
-GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, std::string filePath) : GameScreen(renderer, filePath)
+GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer, std::string filePath) : GameScreen(renderer, filePath)
 {
 	SetUpLevel();
 }
 
-GameScreenLevel1::~GameScreenLevel1()
+GameScreenLevel2::~GameScreenLevel2()
 {
-	mBackgroundTexture = NULL;
 }
 
-void GameScreenLevel1::Render()
+void GameScreenLevel2::Render()
 {
 	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
 	for (int i = 0; i < map->tileMap.size(); i++)
@@ -40,37 +36,22 @@ void GameScreenLevel1::Render()
 	}
 
 	flag->Render();
-
 }
 
-void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
+void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
-	UpdateEnemies(deltaTime, e);
+	//UpdateEnemies(deltaTime, e);
 	if (mScreenshake)
 	{
 		ShakeScreen(deltaTime);
 	}
 
-	mPos = mario->GetPosition();
-	lPos = luigi->GetPosition();
-	
 	GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
 	GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
 
 	mario->Update(deltaTime, e);
 	luigi->Update(deltaTime, e);
 
-	/*if (Collisions::Instance()->Circle(Circle2D(mario->GetCollisionRadius(), mario->GetPosition()), Circle2D(luigi->GetCollisionRadius(), luigi->GetPosition())))
-	{
-		mario->SetPosition(mPos);
-		luigi->SetPosition(lPos);
-	}*/
-
-	/*if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
-	{
-		mario->SetPosition(mPos);
-		luigi->SetPosition(lPos);
-	}*/
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);
@@ -89,7 +70,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	}
 }
 
-bool GameScreenLevel1::SetUpLevel()
+bool GameScreenLevel2::SetUpLevel()
 {
 	mBackgroundTexture = new Texture2D(mRenderer);
 	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundLevel.png"))
@@ -102,4 +83,3 @@ bool GameScreenLevel1::SetUpLevel()
 	mBackgroundYPos = 0.0f;
 	return true;
 }
-

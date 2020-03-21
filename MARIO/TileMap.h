@@ -26,6 +26,7 @@ public:
 
 	Vector2D GetMarioPos() { return marioPos; }
 	Vector2D GetLuigiPos() { return luigiPos; }
+	Vector2D GetFlagPos() { return flagPos; }
 	Vector2D GetKoopaPos(int i) { return koopaPos[i]; }
 	Vector2D GetPowBlockPos(int i) { return powBlockPos[i]; }
 	Vector2D GetCoinPos(int i) { return coinPos[i]; }
@@ -41,6 +42,7 @@ private:
 
 	Vector2D marioPos;
 	Vector2D luigiPos;
+	Vector2D flagPos;
 
 	vector<Vector2D> koopaPos;
 	vector<Vector2D> powBlockPos;
