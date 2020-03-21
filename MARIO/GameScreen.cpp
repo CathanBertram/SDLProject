@@ -1,5 +1,6 @@
 #include <sstream>
 #include "GameScreen.h"
+#include "GameManager.h"
 
 GameScreen::GameScreen(SDL_Renderer* renderer)
 {
@@ -78,7 +79,7 @@ bool GameScreen::CheckMapColl(Character* obj)
 			{
 				if (map->tileMap[i][j]->collidable == true)
 				{
-					if (Collisions::Instance()->Box(obj->GetCollisionBox(), map->tileMap[i][j]->GetCollisionBox()))
+					if (GameManager::Instance()->collision->Box(obj->GetCollisionBox(), map->tileMap[i][j]->GetCollisionBox()))
 					{
 						return true;
 					}

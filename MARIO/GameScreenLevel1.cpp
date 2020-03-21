@@ -2,6 +2,7 @@
 #include "GameScreenLevel1.h"
 #include "Texture2D.h"
 #include "PowBlock.h"
+#include "GameManager.h"
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, std::string filePath) : GameScreen(renderer, filePath)
 {
@@ -63,11 +64,11 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		luigi->SetPosition(lPos);
 	}*/
 
-	/*if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
+	if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
 	{
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
-	}*/
+	}
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);
@@ -75,7 +76,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	UpdatePowBlock(deltaTime);
 	for (int i = 0; i < mCoins.size(); i++)
 	{
-		if (Collisions::Instance()->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 		{
 			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
 		}
@@ -87,7 +88,7 @@ void GameScreenLevel1::UpdatePowBlock(float deltaTime)
 	for (unsigned int i = 0; i < mPowBlock.size(); i++)
 	{
 
-		if (Collisions::Instance()->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 		{
 			if (mPowBlock[i]->IsAvailable())
 			{
@@ -103,7 +104,7 @@ void GameScreenLevel1::UpdatePowBlock(float deltaTime)
 				}
 			}
 		}
-		if (Collisions::Instance()->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 		{
 			if (mPowBlock[i]->IsAvailable())
 			{
@@ -148,7 +149,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			}
 			else
 			{
-				if (Collisions::Instance()->Circle(Circle2D(mKoopas[i]->GetCollisionRadius(), mKoopas[i]->GetPosition()), Circle2D(mario->GetCollisionRadius(), mario->GetPosition())))
+				if (GameManager::Instance()->collision->Circle(Circle2D(mKoopas[i]->GetCollisionRadius(), mKoopas[i]->GetPosition()), Circle2D(mario->GetCollisionRadius(), mario->GetPosition())))
 				{
 					//Set Mario To Dead
 				}

@@ -1,50 +1,15 @@
-﻿  GameScreen.cpp
-D:\GITHUB\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(23,25): warning C4018: '<': signed/unsigned mismatch
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(28,25): warning C4018: '<': signed/unsigned mismatch
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(33,25): warning C4018: '<': signed/unsigned mismatch
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(75,21): warning C4018: '<': signed/unsigned mismatch
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(77,22): warning C4018: '<': signed/unsigned mismatch
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(98,110): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(98,74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(98,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(99,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(99,71): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(99,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(100,106): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(100,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(100,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(101,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(101,67): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(101,154): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(114,110): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(114,74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(114,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(115,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(115,71): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(115,154): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(128,94): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(128,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(128,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(129,123): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(129,72): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(129,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(130,124): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(130,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(130,145): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(143,121): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(143,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(143,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(144,152): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(144,74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(144,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(145,151): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(145,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(145,172): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(158,109): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(158,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(158,130): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(171,136): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(171,70): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\GITHUB\SDLProject\MARIO\GameScreen.cpp(171,157): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-  MARIO.vcxproj -> D:\GITHUB\SDLProject\Debug\MARIO.exe
+﻿  Character.cpp
+E:\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+E:\SDLProject\MARIO\Character.cpp(24,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\SDLProject\MARIO\Character.cpp(25,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\SDLProject\MARIO\Character.cpp(25,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\SDLProject\MARIO\Character.cpp(25,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\SDLProject\MARIO\Character.cpp(25,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\SDLProject\MARIO\Character.cpp(26,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\SDLProject\MARIO\Character.cpp(26,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\SDLProject\MARIO\Character.cpp(26,83): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\SDLProject\MARIO\Character.cpp(26,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+E:\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  MARIO.vcxproj -> E:\SDLProject\Debug\MARIO.exe

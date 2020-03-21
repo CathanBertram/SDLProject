@@ -2,8 +2,10 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include "GameManager.h"
 
 void CloseSDL();
+void InitGameManager();
 bool InitSDL();
 void Render();
 void Update();
@@ -18,11 +20,14 @@ bool quit = false;
 
 int main(int argc, char* agrs[])
 {
-	//Game Loop
+	//Initialise SDL elements
 	if (InitSDL())
 	{
+		InitGameManager();
+		GameManager::Instance()->soundManager->PlayMusic("AUDIO/Mario.mp3");
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
+		//Game Loop
 		while (!quit)
 		{
 			Render();
@@ -44,6 +49,12 @@ void CloseSDL()
 	gRenderer = NULL;
 	delete gameScreenManager;
 	gameScreenManager = NULL;
+}
+
+void InitGameManager()
+{
+	GameManager::Instance()->collision = new Collisions();
+	GameManager::Instance()->soundManager = new SoundManager();
 }
 
 bool InitSDL()
@@ -80,6 +91,11 @@ bool InitSDL()
 	else
 	{
 		cout << "Renderer could not initialise. Error: " << SDL_GetError();
+		return false;
+	}
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		std::cout << "Mixer Could Not Initialise. Error: " << Mix_GetError() << std::endl;
 		return false;
 	}
 	return true;

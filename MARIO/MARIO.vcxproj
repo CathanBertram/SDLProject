@@ -131,6 +131,7 @@
     <ClCompile Include="CharacterMario.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameScreenIntro.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PowBlock.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileMap.cpp" />
@@ -158,6 +160,7 @@
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Commons.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenIntro.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="GameScreenManager.h" />
     <ClInclude Include="LevelMap.h" />
     <ClInclude Include="PowBlock.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Tile.h" />

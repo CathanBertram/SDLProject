@@ -1,7 +1,5 @@
 #include "Collisions.h"
 
-Collisions* Collisions::mInstance = NULL;
-
 Collisions::Collisions()
 {
 
@@ -9,17 +7,8 @@ Collisions::Collisions()
 
 Collisions::~Collisions()
 {
-	mInstance = NULL;
 }
 
-Collisions* Collisions::Instance()
-{
-	if (!mInstance)
-	{
-		mInstance = new Collisions;
-	}
-	return mInstance;
-}
 
 bool Collisions::Circle(Circle2D obj1, Circle2D obj2)
 {

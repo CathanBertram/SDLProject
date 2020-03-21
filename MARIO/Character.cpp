@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Texture2D.h"
 #include "GameScreen.h"
+#include "GameManager.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
@@ -98,6 +99,7 @@ void Character::Jump()
 {
 	if (!mJumping && mCanJump)
 	{
+		GameManager::Instance()->soundManager->PlaySFX("AUDIO/Jump.ogg");
 		mJumpForce = INITIAL_JUMP_FORCE;
 		mJumping = true;
 		mCanJump = false;
