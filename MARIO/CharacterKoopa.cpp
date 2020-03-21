@@ -2,7 +2,7 @@
 
 CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity, float movementSpeed) : Character(renderer, imagePath, startPosition, startFace, gravity)
 {
-	mFacingDirection = startFace;
+	mFacingDirection = FACING(rand() % 2);
 	speed = movementSpeed;
 	mPosition = startPosition;
 

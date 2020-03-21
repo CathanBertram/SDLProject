@@ -121,6 +121,7 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 		int enemyIndexToDelete = -1;
 		for (unsigned int i = 0; i < mKoopas.size(); i++)
 		{
+			GameManager::Instance()->collision->ObjectCollChecks(mKoopas[i], deltaTime, map);
 			if (mKoopas[i]->GetPosition().y > 0.0f)
 			{
 				if (mKoopas[i]->GetPosition().x < (float)(-mKoopas[i]->GetCollisionBox().w * 0.5f) ||
