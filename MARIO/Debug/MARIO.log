@@ -1,14 +1,49 @@
-﻿  Character.cpp
-E:\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-E:\SDLProject\MARIO\Character.cpp(24,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\Character.cpp(25,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\Character.cpp(25,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\Character.cpp(25,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\Character.cpp(25,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\Character.cpp(26,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\Character.cpp(26,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\Character.cpp(26,83): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\Character.cpp(26,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  Collisions.cpp
+E:\SDLProject\MARIO\Collisions.cpp(41,21): warning C4018: '<': signed/unsigned mismatch
+E:\SDLProject\MARIO\Collisions.cpp(43,22): warning C4018: '<': signed/unsigned mismatch
+E:\SDLProject\MARIO\Collisions.cpp(64,110): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(64,74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(64,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(65,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(65,71): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(65,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(66,106): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(66,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(66,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(67,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(67,67): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(67,154): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(80,110): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(80,74): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(80,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(81,133): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(81,71): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(81,154): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(94,94): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(94,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(94,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(95,124): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(95,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(95,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(96,124): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(96,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(96,145): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(109,121): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(109,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(109,6): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(110,151): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(110,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(110,1): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(111,151): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(111,73): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(111,172): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(124,109): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(124,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(124,130): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+E:\SDLProject\MARIO\Collisions.cpp(137,136): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(137,70): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+E:\SDLProject\MARIO\Collisions.cpp(137,157): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+  GameManager.cpp
   main.cpp
 E:\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
   Generating Code...

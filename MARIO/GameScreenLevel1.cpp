@@ -51,9 +51,9 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	mPos = mario->GetPosition();
 	lPos = luigi->GetPosition();
-
-	ObjectCollChecks(mario, deltaTime);
-	ObjectCollChecks(luigi, deltaTime);
+	
+	GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
+	GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
 
 	mario->Update(deltaTime, e);
 	luigi->Update(deltaTime, e);
