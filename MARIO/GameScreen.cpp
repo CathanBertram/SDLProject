@@ -17,33 +17,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	}
 	map = new TileMap(tileMap, mRenderer, filePath);
 
-	//Create Characters
-	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", map->GetMarioPos(), FACING_RIGHT, true);
-	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", map->GetLuigiPos(), FACING_RIGHT, true);
-	flag = new Flag(mRenderer, "Images/Flag.png", map->GetFlagPos(), true);
-	//Create Koopas
-	for (unsigned i = 0; i < map->GetKoopaSize(); i++)
-	{
-		CreateKoopa(map->GetKoopaPos(i), FACING_LEFT, KOOPA_SPEED);
-	}
-	//Create PowBlocks
-	for (unsigned i = 0; i < map->GetPowBlockSize(); i++)
-	{
-		CreatePowBlock(map->GetPowBlockPos(i));
-	}
-	//Create Coins
-	for (unsigned i = 0; i < map->GetCoinSize(); i++)
-	{
-		CreateCoin(map->GetCoinPos(i));
-	}
-	for (int i = 0; i < map->GetLevelHeight(); i++)
-	{
-		for (int j = 0; j < map->GetLevelWidth(); j++)
-		{
-			std::cout << map->GetTileAt(i, j);
-		}
-		std::cout << std::endl;
-	}
+	SetUpLevel();
 }
 
 GameScreen::~GameScreen()
@@ -73,6 +47,11 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 void GameScreen::CreateCoin(Vector2D position)
 {
 	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
+}
+
+void GameScreen::CreateQuestion(Vector2D position)
+{
+	mQuestionBlock.push_back(new QuestionBlock(mRenderer, "Images/QuestionBlockSheet.png", position, false));
 }
 
 void GameScreen::UpdatePowBlock(float deltaTime)
@@ -152,6 +131,41 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 				enemyIndexToDelete = i;
 			}
 		}
+	}
+}
+
+void GameScreen::SetUpLevel()
+{
+	//Create Characters
+	mario = new CharacterMario(mRenderer, "Images/MarioSheet.png", map->GetMarioPos(), FACING_RIGHT, true);
+	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSheet.png", map->GetLuigiPos(), FACING_RIGHT, true);
+	flag = new Flag(mRenderer, "Images/Flag.png", map->GetFlagPos(), true);
+	//Create Koopas
+	for (unsigned i = 0; i < map->GetKoopaSize(); i++)
+	{
+		CreateKoopa(map->GetKoopaPos(i), FACING_LEFT, KOOPA_SPEED);
+	}
+	//Create PowBlocks
+	for (unsigned i = 0; i < map->GetPowBlockSize(); i++)
+	{
+		CreatePowBlock(map->GetPowBlockPos(i));
+	}
+	//Create Coins
+	for (unsigned i = 0; i < map->GetCoinSize(); i++)
+	{
+		CreateCoin(map->GetCoinPos(i));
+	}
+	for (int i = 0; i < map->GetQuestionSize(); i++)
+	{
+		CreateQuestion(map->GetQuestionPos(i));
+	}
+	for (int i = 0; i < map->GetLevelHeight(); i++)
+	{
+		for (int j = 0; j < map->GetLevelWidth(); j++)
+		{
+			std::cout << map->GetTileAt(i, j);
+		}
+		std::cout << std::endl;
 	}
 }
 

@@ -117,8 +117,9 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			
 			break;
 		case 10:
+			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
 			//Create Question Tile
-			
+			questionPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			break;
 		}
 		x++;

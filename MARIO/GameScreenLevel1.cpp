@@ -30,17 +30,22 @@ void GameScreenLevel1::Render()
 	{
 		mPowBlock[i]->Render();
 	}
+
 	for (unsigned int i = 0; i < mKoopas.size(); i++)
 	{
 		mKoopas[i]->Render();
 	}
+
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Render();
 	}
 
+	for (unsigned int i = 0; i < mQuestionBlock.size(); i++)
+	{
+		mQuestionBlock[i]->Render();
+	}
 	flag->Render();
-
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
@@ -75,12 +80,26 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		mCoins[i]->Update(deltaTime, e);
 	}
+	for (unsigned int i = 0; i < mQuestionBlock.size(); i++)
+	{
+		mQuestionBlock[i]->Update(deltaTime, e);
+	}
 	UpdatePowBlock(deltaTime);
 	for (int i = 0; i < mCoins.size(); i++)
 	{
 		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 		{
 			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
+		}
+	}
+	for (int i = 0; i < mQuestionBlock.size(); i++)
+	{
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
+		{
+			if (!mQuestionBlock[i]->IsBroken())
+			{
+				mQuestionBlock[i]->DecreaseHits();	
+			}
 		}
 	}
 	if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))

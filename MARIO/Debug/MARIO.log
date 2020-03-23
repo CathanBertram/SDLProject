@@ -1,14 +1,7 @@
-﻿  CharacterKoopa.cpp
+﻿  GameScreenLevel1.cpp
 E:\SDLProject\MARIO\CharacterKoopa.h(27,28): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(13,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(14,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(87,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(88,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\CharacterKoopa.cpp(88,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(88,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\CharacterKoopa.cpp(88,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(89,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\CharacterKoopa.cpp(89,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\SDLProject\MARIO\CharacterKoopa.cpp(89,83): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\SDLProject\MARIO\CharacterKoopa.cpp(89,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\SDLProject\MARIO\GameScreenLevel1.cpp(20,20): warning C4018: '<': signed/unsigned mismatch
+E:\SDLProject\MARIO\GameScreenLevel1.cpp(22,21): warning C4018: '<': signed/unsigned mismatch
+E:\SDLProject\MARIO\GameScreenLevel1.cpp(88,20): warning C4018: '<': signed/unsigned mismatch
+E:\SDLProject\MARIO\GameScreenLevel1.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
   MARIO.vcxproj -> E:\SDLProject\Debug\MARIO.exe

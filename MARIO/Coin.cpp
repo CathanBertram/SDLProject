@@ -8,6 +8,8 @@ Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition
 	slice = 0;
 	mSingleSpriteWidth = mTexture->GetWidth() / 4;
 	mSingleSpriteHeight = mTexture->GetHeight();
+	mPosition.x += (TILE_WIDTH - mSingleSpriteWidth)/2;
+	mPosition.y += (TILE_HEIGHT - mSingleSpriteHeight)/2;
 }
 
 Coin::~Coin()

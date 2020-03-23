@@ -30,10 +30,12 @@ public:
 	Vector2D GetKoopaPos(int i) { return koopaPos[i]; }
 	Vector2D GetPowBlockPos(int i) { return powBlockPos[i]; }
 	Vector2D GetCoinPos(int i) { return coinPos[i]; }
+	Vector2D GetQuestionPos(int i) { return questionPos[i]; }
 
 	int GetKoopaSize() { return koopaPos.size(); }
 	int GetPowBlockSize() { return powBlockPos.size(); }
 	int GetCoinSize() { return coinPos.size(); }
+	int GetQuestionSize() { return questionPos.size(); }
 
 private:
 	SDL_Renderer* mRenderer;
@@ -47,5 +49,6 @@ private:
 	vector<Vector2D> koopaPos;
 	vector<Vector2D> powBlockPos;
 	vector<Vector2D> coinPos;
+	vector<Vector2D> questionPos;
 };
 

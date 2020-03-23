@@ -9,6 +9,7 @@
 #include "CharacterMario.h"
 #include "CharacterKoopa.h"
 #include "PowBlock.h"
+#include "QuestionBlock.h"
 #include "Flag.h"
 
 class Tile;
@@ -27,13 +28,6 @@ public:
 	vector<vector<Tile*> > tileMap;
 	TileMap* map;
 
-	void CreateKoopa(Vector2D position, FACING direction, float speed);
-	void CreatePowBlock(Vector2D position);
-	void CreateCoin(Vector2D position);
-
-	void UpdatePowBlock(float deltaTime);
-	void UpdateEnemies(float deltaTime, SDL_Event e);
-
 protected:
 	SDL_Renderer* mRenderer;
 	bool mScreenshake;
@@ -50,5 +44,17 @@ protected:
 	vector<CharacterKoopa*> mKoopas;
 	vector<Coin*> mCoins;
 	vector<PowBlock*> mPowBlock;
+	vector<QuestionBlock*> mQuestionBlock;
+
+	void SetUpLevel();
+
+	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreatePowBlock(Vector2D position);
+	void CreateCoin(Vector2D position);
+	void CreateQuestion(Vector2D position);
+
+	void UpdatePowBlock(float deltaTime);
+	void UpdateEnemies(float deltaTime, SDL_Event e);
+
 };
 
