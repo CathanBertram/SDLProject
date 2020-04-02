@@ -20,6 +20,10 @@ public:
 	bool CheckMapCollRight(Character* obj, float deltaTime, TileMap* map);
 	bool CheckMapCollUp(Character* obj, TileMap* map);
 	bool CheckMapCollDown(Character* obj, TileMap* map);
+	bool CheckMapCollUR(Character* obj, float deltaTime, TileMap* map);
+	bool CheckMapCollUL(Character* obj, float deltaTime, TileMap* map);
+	bool CheckMapCollDR(Character* obj, float deltaTime, TileMap* map);
+	bool CheckMapCollDL(Character* obj, float deltaTime, TileMap* map);
 	void ObjectCollChecks(Character* obj, float deltaTime, TileMap* map);
 
 private:

@@ -143,6 +143,58 @@ bool Collisions::CheckMapCollDown(Character* obj, TileMap* map)
 	else return false;
 }
 
+bool Collisions::CheckMapCollUR(Character* obj, float deltaTime, TileMap* map)
+{
+	if (map != NULL)
+	{
+		if (map->GetTileAt((obj->GetPosition().y + 1) / TILE_HEIGHT, ((obj->GetPosition().x - 1) + obj->GetSingleWidth()) / TILE_WIDTH) == true)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
+bool Collisions::CheckMapCollUL(Character* obj, float deltaTime, TileMap* map)
+{
+	if (map != NULL)
+	{
+		if (map->GetTileAt((obj->GetPosition().y + 1) / TILE_HEIGHT, (obj->GetPosition().x + 1) / TILE_WIDTH) == true)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
+bool Collisions::CheckMapCollDR(Character* obj, float deltaTime, TileMap* map)
+{
+	if (map != NULL)
+	{
+		if (map->GetTileAt(((obj->GetPosition().y - 1) + obj->GetSingleHeight()) / TILE_HEIGHT, ((obj->GetPosition().x - 1) + obj->GetSingleWidth()) / TILE_WIDTH) == true)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
+bool Collisions::CheckMapCollDL(Character* obj, float deltaTime, TileMap* map)
+{
+	if (map != NULL)
+	{
+		if (map->GetTileAt(((obj->GetPosition().y - 1) + obj->GetSingleHeight()) / TILE_HEIGHT, (obj->GetPosition().x + 1) / TILE_WIDTH) == true)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
 void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 {
 	obj->ResetNumOfMoves();
@@ -153,7 +205,7 @@ void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 		//Check Collisions To The Left
 		for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
 		{
-			if (CheckMapCollLeft(obj, deltaTime, map) == true)
+			if (CheckMapCollLeft(obj, deltaTime, map) == true || CheckMapCollUL(obj, deltaTime, map) == true || CheckMapCollDL(obj, deltaTime, map) == true)
 			{
 				break;
 			}
@@ -168,7 +220,7 @@ void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 		for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
 		{
 			//Check Collisions To The Right
-			if (CheckMapCollRight(obj, deltaTime, map) == true)
+			if (CheckMapCollRight(obj, deltaTime, map) == true || CheckMapCollUR(obj, deltaTime, map) == true || CheckMapCollDR(obj, deltaTime, map) == true)
 			{
 				break;
 			}
@@ -180,7 +232,7 @@ void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 	}
 
 	//Check Collisions Up
-	if (CheckMapCollUp(obj, map) == true)
+	if (CheckMapCollUp(obj, map) == true || CheckMapCollUL(obj, deltaTime, map) == true || CheckMapCollUR(obj, deltaTime, map) == true)
 	{
 		obj->CancelJump();
 	}
@@ -188,7 +240,7 @@ void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 	//Check Collisions Down
 	for (int i = 0; i < NUMBER_OF_MOVEMENTS; i++)
 	{
-		if (CheckMapCollDown(obj, map) == true)
+		if (CheckMapCollDown(obj, map) == true || CheckMapCollDL(obj, deltaTime, map) == true || CheckMapCollDR(obj, deltaTime, map) == true)
 		{
 			obj->EnableJump();
 			break;
