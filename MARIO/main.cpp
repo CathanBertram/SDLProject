@@ -52,6 +52,7 @@ void InitGameManager()
 	GameManager::Instance()->collision = new Collisions();
 	GameManager::Instance()->soundManager = new SoundManager();
 	GameManager::Instance()->gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
+	GameManager::Instance()->camera = new Camera(Rect2D(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 }
 
 bool InitSDL()

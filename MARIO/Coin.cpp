@@ -1,4 +1,5 @@
 #include "Coin.h"
+#include "GameManager.h"
 
 Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity) : GameObject(renderer, imagePath, startPosition, gravity)
 {
@@ -20,7 +21,7 @@ void Coin::Render()
 {
 	int left = mSingleSpriteWidth * slice;
 	SDL_Rect portionOfSpritesheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
-	SDL_Rect destRect = { (int)(mPosition.x),(int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
+	SDL_Rect destRect = { (int)(mPosition.x - GameManager::Instance()->camera->GetRect().x),(int)(mPosition.y - GameManager::Instance()->camera->GetRect().y), mSingleSpriteWidth, mSingleSpriteHeight };
 
 	mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_NONE);
 }

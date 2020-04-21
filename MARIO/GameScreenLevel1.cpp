@@ -106,6 +106,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
 	}
+	GameScreen::Update(deltaTime, e);
 }
 
 bool GameScreenLevel1::SetUpLevel()

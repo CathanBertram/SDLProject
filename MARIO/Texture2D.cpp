@@ -1,6 +1,7 @@
-#include "Texture2D.h"
 #include <SDL_image.h>
 #include <iostream>
+#include "Texture2D.h"
+#include "GameManager.h"
 
 using namespace std;
 
@@ -53,11 +54,12 @@ void Texture2D::Free()
 
 void Texture2D::Render(Vector2D newPosition, SDL_RendererFlip flip, double angle)
 {
-	SDL_Rect renderLocation{ newPosition.x,newPosition.y,mWidth,mHeight };
+	SDL_Rect renderLocation{ newPosition.x, newPosition.y, mWidth, mHeight };
 	SDL_RenderCopyEx(mRenderer, mTexture, NULL, &renderLocation, angle, NULL, flip);
 }
 
 void Texture2D::Render(SDL_Rect srcRect, SDL_Rect destRect, SDL_RendererFlip flip, double angle)
 {
+
 	SDL_RenderCopyEx(mRenderer, mTexture, &srcRect, &destRect, angle, NULL, flip);
 }

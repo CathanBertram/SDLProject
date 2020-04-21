@@ -2,6 +2,7 @@
 #include "Collisions.h"
 #include "SoundManager.h"
 #include "GameScreenManager.h"
+#include "Camera.h"
 
 class GameManager
 {
@@ -13,6 +14,7 @@ public:
 	Collisions* collision;
 	SoundManager* soundManager;
 	GameScreenManager* gameScreenManager;
+	Camera* camera;
 
 private:
 	GameManager();

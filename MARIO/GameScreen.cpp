@@ -42,6 +42,8 @@ void GameScreen::Render()
 
 void GameScreen::Update(float deltaTime, SDL_Event e)
 {
+	GameManager::Instance()->camera->SetPosition(Rect2D(mario->GetPosition().x, mario->GetPosition().y, mario->GetSingleWidth(), mario->GetSingleHeight()));
+	GameManager::Instance()->camera->Update();
 }
 
 void GameScreen::CreateCoin(Vector2D position)
@@ -158,14 +160,6 @@ void GameScreen::SetUpLevel()
 	for (int i = 0; i < map->GetQuestionSize(); i++)
 	{
 		CreateQuestion(map->GetQuestionPos(i));
-	}
-	for (int i = 0; i < map->GetLevelHeight(); i++)
-	{
-		for (int j = 0; j < map->GetLevelWidth(); j++)
-		{
-			std::cout << map->GetTileAt(i, j);
-		}
-		std::cout << std::endl;
 	}
 }
 

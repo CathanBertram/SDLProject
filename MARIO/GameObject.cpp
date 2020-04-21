@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "GameManager.h"
 
 GameObject::GameObject(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, bool gravity)
 {
@@ -21,7 +22,7 @@ GameObject::~GameObject()
 
 void GameObject::Render()
 {
-	mTexture->Render(mPosition, SDL_FLIP_NONE);
+	mTexture->Render(Vector2D(mPosition.x - GameManager::Instance()->camera->GetRect().x, mPosition.y - GameManager::Instance()->camera->GetRect().y), SDL_FLIP_NONE);
 }
 
 void GameObject::Update(float deltaTime, SDL_Event e)

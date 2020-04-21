@@ -1,5 +1,6 @@
 #include "TileMap.h"
 #include "GameScreen.h"
+#include "GameManager.h"
 
 TileMap::TileMap(vector<vector<Tile*> > tiles, SDL_Renderer* renderer, std::string imagePath)
 {
@@ -42,6 +43,8 @@ void TileMap::LoadLevel(std::string levelToLoad)
 	//Read In Map Height And Width
 	inFile >> levelWidth;
 	inFile >> levelHeight;
+
+	GameManager::Instance()->camera->SetLevelDimensions(levelWidth * TILE_WIDTH, levelHeight * TILE_HEIGHT);
 
 	vector<Tile*> tempTile;
 	int temp;
@@ -112,14 +115,16 @@ void TileMap::LoadLevel(std::string levelToLoad)
 			flagPos = Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT);
 			break;
 		case 9:
-			//Create Unbreakable Tile
+			//Create Question Tile
 			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
+
+			//Create Question Tile
+			questionPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
 			
 			break;
 		case 10:
 			tempTile.push_back(new Tile(mRenderer, "Images/Blank.png", Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT), false, true, false));
-			//Create Question Tile
-			questionPos.push_back(Vector2D(x * TILE_WIDTH, y * TILE_HEIGHT));
+			
 			break;
 		}
 		x++;

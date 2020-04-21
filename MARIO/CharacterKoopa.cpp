@@ -1,4 +1,5 @@
 #include "CharacterKoopa.h"
+#include "GameManager.h"
 
 CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, FACING startFace, bool gravity, float movementSpeed) : Character(renderer, imagePath, startPosition, startFace, gravity)
 {
@@ -86,7 +87,8 @@ void CharacterKoopa::Render()
 {
 	int left = mSingleSpriteWidth * slice;
 	SDL_Rect portionOfSpritesheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
-	SDL_Rect destRect = { (int)(mPosition.x),(int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
+	SDL_Rect destRect = { (int)(mPosition.x - GameManager::Instance()->camera->GetRect().x),(int)(mPosition.y - GameManager::Instance()->camera->GetRect().y), mSingleSpriteWidth, mSingleSpriteHeight };
+
 
 	if (mFacingDirection == FACING_RIGHT)
 	{
