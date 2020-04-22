@@ -1,4 +1,5 @@
 #include "PowBlock.h"
+#include "GameManager.h"
 
 PowBlock::PowBlock(SDL_Renderer* renderer, Vector2D pos)
 {
@@ -34,7 +35,8 @@ void PowBlock::Render()
 	{
 		int left = mSingleSpriteWidth * (mNumberOfHitsLeft - 1);
 		SDL_Rect portionOfSpritesheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
-		SDL_Rect destRect = { (int)(mPosition.x),(int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
+		SDL_Rect destRect = { (int)(mPosition.x - GameManager::Instance()->camera->GetRect().x),(int)(mPosition.y - GameManager::Instance()->camera->GetRect().y), mSingleSpriteWidth, mSingleSpriteHeight };
+
 		mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_NONE);
 	}
 }
@@ -42,12 +44,16 @@ void PowBlock::Render()
 
 void PowBlock::TakeAHit()
 {
-	mNumberOfHitsLeft--;
 	if (mNumberOfHitsLeft <= 0)
 	{
 		mNumberOfHitsLeft = 0;
 		collidable = false;
 	}
-	mSingleSpriteHeight -= 8;
+	else
+	{
+		mNumberOfHitsLeft--;
+		mSingleSpriteHeight -= 8;
+		GameManager::Instance()->soundManager->PlaySFX("AUDIO/PowBlock.ogg");
+	}
 }
 
