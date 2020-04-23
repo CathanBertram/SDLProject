@@ -60,8 +60,5 @@ void GameObject::SetOldPos()
 
 void GameObject::AddGravity(float deltaTime)
 {
-	if (mPosition.y < SCREEN_HEIGHT - 42)
-	{
 		mPosition.y += GRAVITY * deltaTime;
-	}
 }

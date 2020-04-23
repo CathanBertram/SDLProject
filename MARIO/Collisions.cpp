@@ -9,16 +9,22 @@ Collisions::~Collisions()
 {
 }
 
-
-bool Collisions::Circle(Circle2D obj1, Circle2D obj2)
+bool Collisions::Circle(Character* obj1, Character* obj2)
 {
 	//Calculate Vector Between The Two Objects
-	Vector2D vec = Vector2D((obj1.position.x - obj2.position.x),
-							(obj1.position.y - obj2.position.y));
+	Vector2D vec = Vector2D((obj1->GetPosition().x - obj2->GetPosition().x),
+							(obj1->GetPosition().y - obj2->GetPosition().y));
 	//Calculate the length of the vector
-	double distance = sqrt((vec.x * vec.x) + (vec.y * vec.y));
-	double combinedDistance = (obj1.radius + obj2.radius);
-	return distance < combinedDistance;
+	double distance = sqrt((vec.x * vec.x) + (vec.y * vec.y)); 
+	double combinedDistance = (obj1->GetSingleWidth() / 2 + obj2->GetSingleWidth() / 2);
+	if (distance < combinedDistance)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool Collisions::Box(Rect2D rect1, Rect2D rect2)
@@ -251,4 +257,71 @@ void Collisions::ObjectCollChecks(Character* obj, float deltaTime, TileMap* map)
 			obj->DisableJump();
 		}
 	}
+}
+
+void Collisions::CoinCollisions(Coin* obj, TileMap* map, float deltaTime)
+{
+	if (obj->gravityEnabled == true)
+	{
+		if (map->GetTileAt((obj->GetPosition().y + obj->GetSingleHeight()) / TILE_HEIGHT, (obj->GetPosition().x + obj->GetSingleWidth() / 2) / TILE_WIDTH) == true)
+		{
+		
+		}
+		else
+		{
+			obj->AddCoinGravity(deltaTime);
+		}
+	}
+}
+
+bool Collisions::CharacterCollisions(Character* obj1, Character* obj2, TileMap* map, float deltaTime)
+{
+	vector<int> obj1pos;
+	vector<int> obj2pos;
+
+	obj1pos.clear();
+	obj2pos.clear();
+
+	//Obj1 Tiles
+	//Left
+	obj1pos.push_back(map->GetTileAt(obj1->GetPosition().y / TILE_HEIGHT, obj1->GetPosition().x / TILE_WIDTH));
+	obj1pos.push_back(map->GetTileAt((obj1->GetPosition().y + (obj1->GetSingleHeight() / 2)) / TILE_HEIGHT, obj1->GetPosition().x / TILE_WIDTH));
+	obj1pos.push_back(map->GetTileAt((obj1->GetPosition().y + (obj1->GetSingleHeight() - 1)) / TILE_HEIGHT, obj1->GetPosition().x / TILE_WIDTH));
+	//Up
+	obj1pos.push_back(map->GetTileAt(obj1->GetPosition().y / TILE_HEIGHT, (obj1->GetPosition().x + obj1->GetSingleWidth() / 2) / TILE_WIDTH));
+	//Right
+	obj1pos.push_back(map->GetTileAt(obj1->GetPosition().y / TILE_HEIGHT, (obj1->GetPosition().x + obj1->GetSingleWidth()) / TILE_WIDTH));
+	obj1pos.push_back(map->GetTileAt(obj1->GetPosition().y + (obj1->GetSingleHeight() / 2) / TILE_HEIGHT, (obj1->GetPosition().x + obj1->GetSingleWidth())));
+	//obj1pos.push_back(map->GetTileAt(obj1->GetPosition().y + (obj1->GetSingleHeight() - 1) / TILE_HEIGHT, (obj1->GetPosition().x + obj1->GetSingleWidth())));
+	//Down
+	//obj1pos.push_back(map->GetTileAt((obj1->GetPosition().y + obj1->GetSingleHeight()) / TILE_HEIGHT, (obj1->GetPosition().x + obj1->GetSingleWidth() / 2) / TILE_WIDTH));
+
+	//Obj2 Tiles
+	//Left
+	obj2pos.push_back(map->GetTileAt(obj2->GetPosition().y / TILE_HEIGHT, obj2->GetPosition().x / TILE_WIDTH));
+	obj2pos.push_back(map->GetTileAt((obj2->GetPosition().y + (obj2->GetSingleHeight() / 2)) / TILE_HEIGHT, obj2->GetPosition().x / TILE_WIDTH));
+	obj2pos.push_back(map->GetTileAt((obj2->GetPosition().y + (obj2->GetSingleHeight() - 1)) / TILE_HEIGHT, obj2->GetPosition().x / TILE_WIDTH));
+	//Up
+	//obj2pos.push_back(map->GetTileAt(obj2->GetPosition().y / TILE_HEIGHT, (obj2->GetPosition().x + obj2->GetSingleWidth() / 2) / TILE_WIDTH));
+	//Right
+	//obj2pos.push_back(map->GetTileAt(obj2->GetPosition().y / TILE_HEIGHT, (obj2->GetPosition().x + obj2->GetSingleWidth()) / TILE_WIDTH));
+	//obj2pos.push_back(map->GetTileAt(obj2->GetPosition().y + (obj2->GetSingleHeight() / 2) / TILE_HEIGHT, (obj2->GetPosition().x + obj2->GetSingleWidth())));
+	//obj2pos.push_back(map->GetTileAt(obj2->GetPosition().y + (obj2->GetSingleHeight() - 1) / TILE_HEIGHT, (obj2->GetPosition().x + obj2->GetSingleWidth())));
+	//Down
+	//obj2pos.push_back(map->GetTileAt((obj2->GetPosition().y + obj2->GetSingleHeight()) / TILE_HEIGHT, (obj2->GetPosition().x + obj2->GetSingleWidth() / 2) / TILE_WIDTH));
+
+	for (int i = 0; i < obj1pos.size(); i++)
+	{
+		for (int j = 0; j < obj1pos.size(); j++)
+		{
+			std::cerr << obj1pos[i];
+			if (obj1pos[i] == obj2pos[j])
+			{
+				std::cerr << obj2pos[j];
+				return true;
+			}
+		}
+	}
+		
+	return false;
 }

@@ -50,7 +50,7 @@ protected:
 
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 	void CreatePowBlock(Vector2D position);
-	void CreateCoin(Vector2D position);
+	void CreateCoin(Vector2D position, bool gravity);
 	void CreateQuestion(Vector2D position);
 
 	void UpdatePowBlock(float deltaTime);

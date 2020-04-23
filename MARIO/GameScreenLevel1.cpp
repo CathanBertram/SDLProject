@@ -79,6 +79,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);
+		GameManager::Instance()->collision->CoinCollisions(mCoins[i], map, deltaTime);
 	}
 	for (unsigned int i = 0; i < mQuestionBlock.size(); i++)
 	{
@@ -89,7 +90,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 		{
-			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
+			mCoins.erase(mCoins.begin() + i);
+			GameManager::Instance()->scoreManager->IncreaseScore(100);
 		}
 	}
 	for (int i = 0; i < mQuestionBlock.size(); i++)
@@ -99,6 +101,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 			if (!mQuestionBlock[i]->IsBroken())
 			{
 				mQuestionBlock[i]->DecreaseHits();	
+				CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
+				mCoins.back()->Jump(deltaTime, 300);
 			}
 		}
 	}

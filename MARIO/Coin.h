@@ -9,5 +9,15 @@ public:
 
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
+
+	void Jump(float deltaTime, float force);
+
+	void AddCoinGravity(float deltaTime);
+
+private:
+	bool mFalling;
+	bool mCanJump;
+	float mJumpForce;
+	bool mJumping;
 };
 

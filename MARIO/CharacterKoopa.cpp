@@ -16,6 +16,7 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Ve
 	slice = 1;
 
 	flipCooldown = 0.0f;
+	mCollisionRadius = 5.0f;
 }
 
 CharacterKoopa::~CharacterKoopa()
@@ -66,6 +67,9 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 			FlipRightWayUp(deltaTime);
 		}
 	}
+
+
+	//Anim Controls
 	if (mMovingLeft || mMovingRight)
 	{
 		frame += deltaTime * 10;
@@ -79,6 +83,33 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 			slice = 1;
 		}
 	}
+	else if (mInjured)
+	{
+		frame += deltaTime * 10;
+		if (frame > cKoopaFrameTime)
+		{
+			slice++;
+			frame = 0;
+		}
+		if (slice > 13)
+		{
+			slice = 12;
+		}
+	}
+
+	//Flip Cooldown
+	if (flipCooldown > 0)
+	{
+		flipCooldown -= deltaTime;
+		if (flipCooldown <= 0 )
+		{
+			std::cerr << "Refresh" << std::endl;
+			flippable = true;
+			flipCooldown = 0;
+		}
+	}
+
+
 	Character::Update(deltaTime, e);
 
 }
@@ -109,6 +140,13 @@ void CharacterKoopa::SetAlive(bool alive)
 {
 }
 
+void CharacterKoopa::Injure()
+{
+	mInjuredTime = INJURED_TIME;
+	mInjured = true;
+	slice = 13;
+}
+
 void CharacterKoopa::FlipRightWayUp(float deltaTime)
 {
 	mInjured = false;
@@ -117,25 +155,12 @@ void CharacterKoopa::FlipRightWayUp(float deltaTime)
 
 void CharacterKoopa::Flip(float deltaTime)
 {
-	if (flippable)
+	if (mFacingDirection == FACING_LEFT)
 	{
-		if (mFacingDirection == FACING_LEFT)
-		{
-			mFacingDirection = FACING_RIGHT;
-		}
-		else if (mFacingDirection == FACING_RIGHT)
-		{
-			mFacingDirection = FACING_LEFT;
-		}
-		flippable = false;
+		mFacingDirection = FACING_RIGHT;
 	}
-	else
+	else if (mFacingDirection == FACING_RIGHT)
 	{
-		flipCooldown += deltaTime;
-		if (flipCooldown >= cFlipCooldown)
-		{
-			flippable = true;
-			flipCooldown = 0;
-		}
+		mFacingDirection = FACING_LEFT;
 	}
 }

@@ -46,9 +46,9 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 	GameManager::Instance()->camera->Update();
 }
 
-void GameScreen::CreateCoin(Vector2D position)
+void GameScreen::CreateCoin(Vector2D position, bool gravity)
 {
-	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, false));
+	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, gravity));
 }
 
 void GameScreen::CreateQuestion(Vector2D position)
@@ -72,6 +72,7 @@ void GameScreen::UpdatePowBlock(float deltaTime)
 					for (unsigned int i = 0; i < mKoopas.size(); i++)
 					{
 						mKoopas[i]->Jump(deltaTime);
+						mKoopas[i]->Injure();
 					}
 				}
 			}
@@ -88,9 +89,14 @@ void GameScreen::UpdatePowBlock(float deltaTime)
 					for (unsigned int i = 0; i < mKoopas.size(); i++)
 					{
 						mKoopas[i]->Jump(deltaTime);
+						mKoopas[i]->Injure();
 					}
 				}
 			}
+		}
+		if (!mPowBlock[i]->IsAvailable())
+		{
+			mPowBlock.erase(mPowBlock.begin() + i);
 		}
 	}
 }
@@ -99,38 +105,43 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 {
 	if (!mKoopas.empty())
 	{
-		int enemyIndexToDelete = -1;
 		for (unsigned int i = 0; i < mKoopas.size(); i++)
 		{
-			GameManager::Instance()->collision->ObjectCollChecks(mKoopas[i], deltaTime, map);
-			if (mKoopas[i]->GetPosition().y > 0.0f)
-			{
-				if (mKoopas[i]->GetPosition().x < (float)(-mKoopas[i]->GetCollisionBox().w * 0.5f) ||
-					mKoopas[i]->GetPosition().x > SCREEN_WIDTH - (float)(mKoopas[i]->GetCollisionBox().w * 0.55f))
-				{
-					mKoopas[i]->SetAlive(false);
-					mKoopas[i]->Jump(deltaTime);
-				}
-			}
-
 			mKoopas[i]->Update(deltaTime, e);
 
-			if ((mKoopas[i]->GetPosition().y > 0.0f || mKoopas[i]->GetPosition().y <= 64.0f) && (mKoopas[i]->GetPosition().x < 64.0f || mKoopas[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
+			GameManager::Instance()->collision->ObjectCollChecks(mKoopas[i], deltaTime, map);
+			if (GameManager::Instance()->collision->CheckMapCollLeft(mKoopas[i], deltaTime, map) == true)
 			{
-				//Ignore Collisions if behind pipe
-				//mKoopas[i]->Jump(deltaTime);
+				mKoopas[i]->Jump(deltaTime);
 			}
-			else
+			if (GameManager::Instance()->collision->CheckMapCollRight(mKoopas[i], deltaTime, map) == true)
 			{
-				if (GameManager::Instance()->collision->Circle(Circle2D(mKoopas[i]->GetCollisionRadius(), mKoopas[i]->GetPosition()), Circle2D(mario->GetCollisionRadius(), mario->GetPosition())))
-				{
-					//Set Mario To Dead
-				}
+				mKoopas[i]->Jump(deltaTime);
 			}
 
-			if (!mKoopas[i]->GetAlive())
+
+			if (mKoopas[i]->GetAlive())
 			{
-				enemyIndexToDelete = i;
+				mKoopas.erase(mKoopas.begin() + i);
+			}
+
+			//Collisions With Mario
+			if (mKoopas[i]->GetInjured() == false)
+			{
+				if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+				{
+					//mario dies
+					std::cerr << "yeet" << std::endl;
+				}
+			}
+			else if (mKoopas[i]->GetInjured() == true)
+			{
+				if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+				{
+					//Kill Koopa And Increase Score
+					mKoopas.erase(mKoopas.begin() + i);
+					GameManager::Instance()->scoreManager->IncreaseScore(100);
+				}
 			}
 		}
 	}
@@ -155,7 +166,7 @@ void GameScreen::SetUpLevel()
 	//Create Coins
 	for (unsigned i = 0; i < map->GetCoinSize(); i++)
 	{
-		CreateCoin(map->GetCoinPos(i));
+		CreateCoin(map->GetCoinPos(i), false);
 	}
 	for (int i = 0; i < map->GetQuestionSize(); i++)
 	{

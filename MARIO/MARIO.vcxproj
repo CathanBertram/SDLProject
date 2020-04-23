@@ -144,6 +144,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PowBlock.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="LevelMap.h" />
     <ClInclude Include="PowBlock.h" />
     <ClInclude Include="QuestionBlock.h" />
+    <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Main.h" />

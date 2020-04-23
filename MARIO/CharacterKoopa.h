@@ -14,17 +14,19 @@ public:
 
 	bool GetAlive();
 	void SetAlive(bool alive);
+	void Injure();
+	bool GetInjured() { return mInjured; }
 
+	void Flip(float deltaTime);
 private:
 	bool mInjured;
 	float mInjuredTime;
 
-	void Flip(float deltaTime);
 	void FlipRightWayUp(float deltaTime);
 
 	bool flippable;
 	float flipCooldown;
-	const int cFlipCooldown = 0.05;
+	const int cFlipCooldown = 1;
 	const int cKoopaFrameTime = 2;
 };
 

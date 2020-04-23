@@ -11,6 +11,7 @@ Coin::Coin(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition
 	mSingleSpriteHeight = mTexture->GetHeight();
 	mPosition.x += (TILE_WIDTH - mSingleSpriteWidth)/2;
 	mPosition.y += (TILE_HEIGHT - mSingleSpriteHeight)/2;
+	gravityEnabled = gravity;
 }
 
 Coin::~Coin()
@@ -38,4 +39,40 @@ void Coin::Update(float deltaTime, SDL_Event e)
 	{
 		slice = 0;
 	}
+
+	//Jump Force Change
+	if (mJumping)
+	{
+		//Adjust Position
+		mPosition.y -= mJumpForce * deltaTime;
+
+		//Reduce Jump Force
+		mJumpForce -= 2000 * deltaTime;
+
+		if (GRAVITY > mJumpForce)
+		{
+			mFalling = true;
+		}
+		//Check If Jump Force = 0
+		if (mJumpForce <= 0.0f)
+		{
+			mJumping = false;
+		}
+	}
+	else
+	{
+		mFalling = false;
+	}
+}
+
+void Coin::Jump(float deltaTime, float force)
+{
+	mJumpForce = force;
+	mJumping = true;
+	mCanJump = false;
+}
+
+void Coin::AddCoinGravity(float deltaTime)
+{
+	mPosition.y += 100 * deltaTime;
 }

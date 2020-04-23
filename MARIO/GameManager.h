@@ -3,6 +3,7 @@
 #include "SoundManager.h"
 #include "GameScreenManager.h"
 #include "Camera.h"
+#include "ScoreManager.h"
 
 class GameManager
 {
@@ -15,6 +16,7 @@ public:
 	SoundManager* soundManager;
 	GameScreenManager* gameScreenManager;
 	Camera* camera;
+	ScoreManager* scoreManager;
 
 private:
 	GameManager();

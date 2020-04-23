@@ -9,7 +9,6 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mMovingLeft = false;
 	mMovingRight = false;
 	speed = PLAYER_SPEED;
-	mCollisionRadius = 15.0f;
 	mFacingDirection = startFace;
 
 	frame = 1;

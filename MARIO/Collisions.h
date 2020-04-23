@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "TileMap.h"
+#include "Coin.h"
 
 class Character;
 
@@ -10,7 +11,7 @@ public:
 	Collisions();
 	~Collisions();
 
-	bool Circle(Circle2D obj1, Circle2D obj2);
+	bool Circle(Character* obj1, Character* obj2);
 	bool Box(Rect2D rect1, Rect2D rect2);
 
 	bool CheckMapColl(Character* obj, TileMap* map);
@@ -25,6 +26,9 @@ public:
 	bool CheckMapCollDR(Character* obj, float deltaTime, TileMap* map);
 	bool CheckMapCollDL(Character* obj, float deltaTime, TileMap* map);
 	void ObjectCollChecks(Character* obj, float deltaTime, TileMap* map);
+
+	void CoinCollisions(Coin* obj, TileMap* map, float deltaTime);
+	bool CharacterCollisions(Character* obj1, Character* obj2, TileMap* map, float deltaTime);
 
 private:
 
