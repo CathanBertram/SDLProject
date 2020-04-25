@@ -5,6 +5,7 @@
 GameScreen::GameScreen(SDL_Renderer* renderer)
 {
 	mRenderer = renderer;
+	gameEnd = false;
 }
 
 GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
@@ -17,6 +18,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	}
 	map = new TileMap(tileMap, mRenderer, filePath);
 
+	gameEnd = false;
 	SetUpLevel();
 }
 
@@ -38,62 +40,91 @@ GameScreen::~GameScreen()
 
 void GameScreen::Render()
 {
+	if (gameEnd)
+	{
+		gameOver->Render();
+	}
 }
 
 void GameScreen::Update(float deltaTime, SDL_Event e)
 {
-	GameManager::Instance()->camera->SetPosition(Rect2D(mario->GetPosition().x, mario->GetPosition().y, mario->GetSingleWidth(), mario->GetSingleHeight()));
+	if (mario->GetDead() == false)
+	{
+		GameManager::Instance()->camera->SetPosition(Rect2D(mario->GetPosition().x, mario->GetPosition().y, mario->GetSingleWidth(), mario->GetSingleHeight()));
+	}
+	else
+	{
+		if (luigi->GetDead() == false)
+		{
+			GameManager::Instance()->camera->SetPosition(Rect2D(luigi->GetPosition().x, luigi->GetPosition().y, luigi->GetSingleWidth(), luigi->GetSingleHeight()));
+		}
+		else
+		{
+			//GameOver
+			if (gameEnd == false)
+			{
+				CreateGameOver();
+			}
+		}
+		if (e.key.keysym.sym == SDLK_SPACE)
+		{
+			GameManager::Instance()->gameScreenManager->ChangeScreen(GameManager::Instance()->gameScreenManager->GetCurrentScreen());
+			gameEnd = false;
+		}
+	}
+	if (gameEnd)
+	{
+		gameOver->Update(deltaTime, e);
+	}
 	GameManager::Instance()->camera->Update();
 }
 
-void GameScreen::CreateCoin(Vector2D position, bool gravity)
-{
-	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, gravity));
-}
-
-void GameScreen::CreateQuestion(Vector2D position)
-{
-	mQuestionBlock.push_back(new QuestionBlock(mRenderer, "Images/QuestionBlockSheet.png", position, false));
-}
 
 void GameScreen::UpdatePowBlock(float deltaTime)
 {
 	for (unsigned int i = 0; i < mPowBlock.size(); i++)
 	{
-		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		if (mario->GetDead() == false)
 		{
-			if (mPowBlock[i]->IsAvailable())
+			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 			{
-				if (mario->IsJumping())
+				if (mPowBlock[i]->IsAvailable())
 				{
-					DoScreenshake();
-					mPowBlock[i]->TakeAHit();
-					mario->CancelJump();
-					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					if (mario->IsJumping())
 					{
-						mKoopas[i]->Jump(deltaTime);
-						mKoopas[i]->Injure();
+						DoScreenshake();
+						mPowBlock[i]->TakeAHit();
+						mario->CancelJump();
+						for (unsigned int i = 0; i < mKoopas.size(); i++)
+						{
+							mKoopas[i]->Jump(deltaTime);
+							mKoopas[i]->Injure();
+						}
 					}
 				}
 			}
 		}
-		if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
+		if (luigi->GetDead() == false)
 		{
-			if (mPowBlock[i]->IsAvailable())
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mPowBlock[i]->GetCollisionBox()))
 			{
-				if (luigi->IsJumping())
+				if (mPowBlock[i]->IsAvailable())
 				{
-					DoScreenshake();
-					mPowBlock[i]->TakeAHit();
-					luigi->CancelJump();
-					for (unsigned int i = 0; i < mKoopas.size(); i++)
+					if (luigi->IsJumping())
 					{
-						mKoopas[i]->Jump(deltaTime);
-						mKoopas[i]->Injure();
+						DoScreenshake();
+						mPowBlock[i]->TakeAHit();
+						luigi->CancelJump();
+						for (unsigned int i = 0; i < mKoopas.size(); i++)
+						{
+							mKoopas[i]->Jump(deltaTime);
+							mKoopas[i]->Injure();
+						}
 					}
 				}
 			}
 		}
+
 		if (!mPowBlock[i]->IsAvailable())
 		{
 			mPowBlock.erase(mPowBlock.begin() + i);
@@ -128,19 +159,43 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 			//Collisions With Mario
 			if (mKoopas[i]->GetInjured() == false)
 			{
-				if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+				if (mario->GetDead() == false)
 				{
-					//mario dies
-					std::cerr << "yeet" << std::endl;
+					if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+					{
+						//mario dies
+						mario->SetDead();
+					}
+				}
+				if (luigi->GetDead() == false)
+				{
+					if (GameManager::Instance()->collision->Circle(luigi, mKoopas[i]))
+					{
+						//luigi dies
+						luigi->SetDead();
+					}
 				}
 			}
 			else if (mKoopas[i]->GetInjured() == true)
 			{
-				if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+				if (mario->GetDead() == false)
 				{
-					//Kill Koopa And Increase Score
-					mKoopas.erase(mKoopas.begin() + i);
-					GameManager::Instance()->scoreManager->IncreaseScore(100);
+					if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
+					{
+						//Kill Koopa And Increase Score
+						mKoopas.erase(mKoopas.begin() + i);
+						GameManager::Instance()->scoreManager->IncreaseScore(100);
+					}
+				}
+
+				if (luigi->GetDead() == false)
+				{
+					if (GameManager::Instance()->collision->Circle(luigi, mKoopas[i]))
+					{
+						//Kill Koopa And Increase Score
+						mKoopas.erase(mKoopas.begin() + i);
+						GameManager::Instance()->scoreManager->IncreaseScore(100);
+					}
 				}
 			}
 		}
@@ -184,6 +239,22 @@ void GameScreen::CreateKoopa(Vector2D position, FACING direction, float speed)
 void GameScreen::CreatePowBlock(Vector2D position)
 {
 	mPowBlock.push_back(new PowBlock(mRenderer, position));
+}
+
+void GameScreen::CreateCoin(Vector2D position, bool gravity)
+{
+	mCoins.push_back(new Coin(mRenderer, "Images/CoinSheet.png", position, gravity));
+}
+
+void GameScreen::CreateQuestion(Vector2D position)
+{
+	mQuestionBlock.push_back(new QuestionBlock(mRenderer, "Images/QuestionBlockSheet.png", position, false));
+}
+
+void GameScreen::CreateGameOver()
+{
+	gameOver = new GameOver(mRenderer, "Images/GameOver.png", Vector2D(0, 0), true);
+	gameEnd = true;
 }
 
 void GameScreen::DoScreenshake()

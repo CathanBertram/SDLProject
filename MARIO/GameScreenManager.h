@@ -19,8 +19,10 @@ public:
 	void Update(float deltaTime, SDL_Event e);
 
 	void ChangeScreen(SCREENS newScreen);
+	SCREENS GetCurrentScreen() { return currentScreen; }
 
 private:
+	SCREENS currentScreen;
 	SDL_Renderer* mRenderer;
 	GameScreen* mCurrentScreen;
 	GameScreenIntro* tempScreenIntro;

@@ -16,6 +16,7 @@ SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer;
 
 bool quit = false;
+bool started = false;
 
 int main(int argc, char* agrs[])
 {
@@ -126,10 +127,15 @@ void Update()
 		case SDLK_ESCAPE:
 			quit = true;
 			return;
-		case SDLK_SPACE:
-			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL1);
+		case SDLK_SPACE:	
+			if (started == false)
+			{
+				GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL1);		
+				started = true;
+			}
 		}
 	}
+
 	GameManager::Instance()->gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
 	gOldTime = newTime;
 	return;

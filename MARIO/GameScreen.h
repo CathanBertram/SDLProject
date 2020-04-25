@@ -11,6 +11,7 @@
 #include "PowBlock.h"
 #include "QuestionBlock.h"
 #include "Flag.h"
+#include "GameOver.h"
 
 class Tile;
 class TileMap;
@@ -31,6 +32,7 @@ public:
 protected:
 	SDL_Renderer* mRenderer;
 	bool mScreenshake;
+	bool gameEnd;
 	float mScreenshakeTime;
 	float mWobble;
 	float mBackgroundYPos;
@@ -41,6 +43,7 @@ protected:
 	CharacterMario* mario;
 	CharacterLuigi* luigi;
 	Flag* flag;
+	GameOver* gameOver;
 	vector<CharacterKoopa*> mKoopas;
 	vector<Coin*> mCoins;
 	vector<PowBlock*> mPowBlock;
@@ -52,6 +55,7 @@ protected:
 	void CreatePowBlock(Vector2D position);
 	void CreateCoin(Vector2D position, bool gravity);
 	void CreateQuestion(Vector2D position);
+	void CreateGameOver();
 
 	void UpdatePowBlock(float deltaTime);
 	void UpdateEnemies(float deltaTime, SDL_Event e);

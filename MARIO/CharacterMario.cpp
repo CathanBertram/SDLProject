@@ -5,6 +5,7 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Ve
 	mSingleSpriteWidth = mTexture->GetWidth() / 12;
 	mSingleSpriteHeight = mTexture->GetHeight() / 3;
 	mCollisionRadius = 6.0f;
+	dead = false;
 }
 
 CharacterMario::~CharacterMario()

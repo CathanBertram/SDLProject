@@ -10,5 +10,13 @@ public:
 
 	void Update(float deltaTime, SDL_Event e);
 	void Render();
+
+	bool GetDead() { return dead; }
+
+	void SetDead() { dead = true; }
+	void SetAlive() { dead = false; }
+
+private:
+	bool dead;
 };
 

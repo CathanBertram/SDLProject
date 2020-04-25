@@ -24,8 +24,11 @@ void GameScreenLevel1::Render()
 			map->tileMap[i][j]->Render();
 		}
 	}
-	mario->Render();
-	luigi->Render();
+	if (mario->GetDead() == false)
+		mario->Render();
+	if (luigi->GetDead() == false)
+		luigi->Render();
+
 	for (unsigned int i = 0; i < mPowBlock.size(); i++)
 	{
 		mPowBlock[i]->Render();
@@ -46,6 +49,7 @@ void GameScreenLevel1::Render()
 		mQuestionBlock[i]->Render();
 	}
 	flag->Render();
+	GameScreen::Render();
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
@@ -56,26 +60,19 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		ShakeScreen(deltaTime);
 	}
 
-	mPos = mario->GetPosition();
-	lPos = luigi->GetPosition();
-	
-	GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
-	GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
-
-	mario->Update(deltaTime, e);
-	luigi->Update(deltaTime, e);
-
-	/*if (Collisions::Instance()->Circle(Circle2D(mario->GetCollisionRadius(), mario->GetPosition()), Circle2D(luigi->GetCollisionRadius(), luigi->GetPosition())))
+	if (mario->GetDead() == false)
 	{
-		mario->SetPosition(mPos);
-		luigi->SetPosition(lPos);
-	}*/
-
-	/*if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
+		mPos = mario->GetPosition();
+		GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
+		mario->Update(deltaTime, e);
+	}
+	if (luigi->GetDead() == false)
 	{
-		mario->SetPosition(mPos);
-		luigi->SetPosition(lPos);
-	}*/
+		lPos = luigi->GetPosition();
+		GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
+		luigi->Update(deltaTime, e);
+	}
+
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);
@@ -88,27 +85,63 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	UpdatePowBlock(deltaTime);
 	for (int i = 0; i < mCoins.size(); i++)
 	{
-		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+		if (mario->GetDead() == false)
 		{
-			mCoins.erase(mCoins.begin() + i);
-			GameManager::Instance()->scoreManager->IncreaseScore(100);
+			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+			{
+				mCoins.erase(mCoins.begin() + i);
+				GameManager::Instance()->scoreManager->IncreaseScore(100);
+			}
+		}
+		if (luigi->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+			{
+				mCoins.erase(mCoins.begin() + i);
+				GameManager::Instance()->scoreManager->IncreaseScore(100);
+			}
 		}
 	}
 	for (int i = 0; i < mQuestionBlock.size(); i++)
 	{
-		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
+		if (mario->GetDead() == false)
 		{
-			if (!mQuestionBlock[i]->IsBroken())
+			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
 			{
-				mQuestionBlock[i]->DecreaseHits();	
-				CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
-				mCoins.back()->Jump(deltaTime, 300);
+				if (!mQuestionBlock[i]->IsBroken())
+				{
+					mQuestionBlock[i]->DecreaseHits();
+					CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
+					mCoins.back()->Jump(deltaTime, 300);
+				}
+			}
+		}
+		if (luigi->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
+			{
+				if (!mQuestionBlock[i]->IsBroken())
+				{
+					mQuestionBlock[i]->DecreaseHits();
+					CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
+					mCoins.back()->Jump(deltaTime, 300);
+				}
 			}
 		}
 	}
-	if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))
+	if (mario->GetDead() == false)
 	{
-		GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))
+		{
+			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+		}
+	}
+	if (luigi->GetDead() == false)
+	{
+		if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), flag->GetCollisionBox()))
+		{
+			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+		}
 	}
 	GameScreen::Update(deltaTime, e);
 }

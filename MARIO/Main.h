@@ -33,4 +33,5 @@ using namespace std;
 #define PLAYER_SPEED 250.0f
 
 #define NUMBER_OF_MOVEMENTS 10
+
 #endif
