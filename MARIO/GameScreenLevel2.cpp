@@ -20,53 +20,128 @@ void GameScreenLevel2::Render()
 			map->tileMap[i][j]->Render();
 		}
 	}
-	mario->Render();
-	luigi->Render();
+	if (mario->GetDead() == false)
+		mario->Render();
+	if (luigi->GetDead() == false)
+		luigi->Render();
+
 	for (unsigned int i = 0; i < mPowBlock.size(); i++)
 	{
 		mPowBlock[i]->Render();
 	}
+
 	for (unsigned int i = 0; i < mKoopas.size(); i++)
 	{
 		mKoopas[i]->Render();
 	}
+
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Render();
 	}
 
+	for (unsigned int i = 0; i < mQuestionBlock.size(); i++)
+	{
+		mQuestionBlock[i]->Render();
+	}
 	flag->Render();
+	GameScreen::Render();
 }
 
 void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
-	//UpdateEnemies(deltaTime, e);
+	UpdateEnemies(deltaTime, e);
 	if (mScreenshake)
 	{
 		ShakeScreen(deltaTime);
 	}
 
-	GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
-	GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
-
-	mario->Update(deltaTime, e);
-	luigi->Update(deltaTime, e);
+	if (mario->GetDead() == false)
+	{
+		GameManager::Instance()->collision->ObjectCollChecks(mario, deltaTime, map);
+		mario->Update(deltaTime, e);
+	}
+	if (luigi->GetDead() == false)
+	{
+		GameManager::Instance()->collision->ObjectCollChecks(luigi, deltaTime, map);
+		luigi->Update(deltaTime, e);
+	}
 
 	for (unsigned int i = 0; i < mCoins.size(); i++)
 	{
 		mCoins[i]->Update(deltaTime, e);
+		GameManager::Instance()->collision->CoinCollisions(mCoins[i], map, deltaTime);
+	}
+	for (unsigned int i = 0; i < mQuestionBlock.size(); i++)
+	{
+		mQuestionBlock[i]->Update(deltaTime, e);
 	}
 	UpdatePowBlock(deltaTime);
 	for (int i = 0; i < mCoins.size(); i++)
 	{
-		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+		if (mario->GetDead() == false)
 		{
-			mCoins[i]->SetPosition(Vector2D(-1000, -1000));
+			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+			{
+				mCoins[i]->MoveOOB();
+				GameManager::Instance()->scoreManager->IncreaseScore(100);
+			}
+		}
+		if (luigi->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
+			{
+				mCoins[i]->MoveOOB();
+				GameManager::Instance()->scoreManager->IncreaseScore(100);
+			}
 		}
 	}
-	if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))
+	for (int i = 0; i < mQuestionBlock.size(); i++)
 	{
-		GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+		if (mario->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
+			{
+				if (!mQuestionBlock[i]->IsBroken())
+				{
+					mQuestionBlock[i]->DecreaseHits();
+					CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
+					mCoins.back()->Jump(deltaTime, 300);
+				}
+			}
+		}
+		if (luigi->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mQuestionBlock[i]->GetCollisionBox()))
+			{
+				if (!mQuestionBlock[i]->IsBroken())
+				{
+					mQuestionBlock[i]->DecreaseHits();
+					CreateCoin(Vector2D(mQuestionBlock[i]->GetPosition().x, mQuestionBlock[i]->GetPosition().y - mCoins[0]->GetSingleHeight()), true);
+					mCoins.back()->Jump(deltaTime, 300);
+				}
+			}
+		}
+	}
+	GameScreen::Update(deltaTime, e);
+	if (mario->GetDead() == false)
+	{
+		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))
+		{
+			levelOver = true;
+			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_WIN);
+		}
+	}
+	if (levelOver == false)
+	{
+		if (luigi->GetDead() == false)
+		{
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), flag->GetCollisionBox()))
+			{
+				levelOver = true;
+				GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_WIN);
+			}
+		}
 	}
 }
 

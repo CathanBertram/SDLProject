@@ -35,6 +35,9 @@ public:
 
 	bool gravityEnabled;
 	void AddGravity(float deltaTime);
+
+	void MoveOOB();
+
 protected:
 
 	SDL_Renderer* mRenderer;

@@ -6,6 +6,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer)
 {
 	mRenderer = renderer;
 	gameEnd = false;
+	levelOver = false;
 }
 
 GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
@@ -19,6 +20,7 @@ GameScreen::GameScreen(SDL_Renderer* renderer, std::string filePath)
 	map = new TileMap(tileMap, mRenderer, filePath);
 
 	gameEnd = false;
+	levelOver = false;
 	SetUpLevel();
 }
 
@@ -26,10 +28,10 @@ GameScreen::~GameScreen()
 {
 	//Delete Character Variables
 	mRenderer = NULL;
-	delete mario;
 	mario = NULL;
-	delete luigi;
+	delete mario;
 	luigi = NULL;
+	delete luigi;
 
 	//Clear Vectors
 	mKoopas.clear();
@@ -77,6 +79,14 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 		gameOver->Update(deltaTime, e);
 	}
 	GameManager::Instance()->camera->Update();
+	if (mario->GetPosition().y > SCREEN_HEIGHT)
+	{
+		mario->SetDead();
+	}
+	if (luigi->GetPosition().y > SCREEN_HEIGHT)
+	{
+		luigi->SetDead();
+	}
 }
 
 
@@ -183,7 +193,7 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 					if (GameManager::Instance()->collision->Circle(mario, mKoopas[i]))
 					{
 						//Kill Koopa And Increase Score
-						mKoopas.erase(mKoopas.begin() + i);
+						mKoopas[i]->MoveOOB();
 						GameManager::Instance()->scoreManager->IncreaseScore(100);
 					}
 				}
@@ -193,7 +203,7 @@ void GameScreen::UpdateEnemies(float deltaTime, SDL_Event e)
 					if (GameManager::Instance()->collision->Circle(luigi, mKoopas[i]))
 					{
 						//Kill Koopa And Increase Score
-						mKoopas.erase(mKoopas.begin() + i);
+						mKoopas[i]->MoveOOB();
 						GameManager::Instance()->scoreManager->IncreaseScore(100);
 					}
 				}

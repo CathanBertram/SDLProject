@@ -26,6 +26,8 @@ public:
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
 
+	bool levelOver;
+
 	vector<vector<Tile*> > tileMap;
 	TileMap* map;
 
@@ -36,6 +38,7 @@ protected:
 	float mScreenshakeTime;
 	float mWobble;
 	float mBackgroundYPos;
+
 
 	void DoScreenshake();
 	void ShakeScreen(float deltaTime);

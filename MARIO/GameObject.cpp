@@ -17,6 +17,7 @@ GameObject::~GameObject()
 {
 	mRenderer = NULL;
  	delete mRenderer;
+	mTexture = NULL;
 	delete mTexture;
 }
 
@@ -61,4 +62,11 @@ void GameObject::SetOldPos()
 void GameObject::AddGravity(float deltaTime)
 {
 		mPosition.y += GRAVITY * deltaTime;
+}
+
+void GameObject::MoveOOB()
+{
+	mPosition.x = -100;
+	mPosition.y = -100;
+	gravityEnabled = false;
 }

@@ -16,6 +16,8 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 
 Character::~Character()
 {
+	mCurrentLevelMap = NULL;
+	delete mCurrentLevelMap;
 }
 
 void Character::Render()

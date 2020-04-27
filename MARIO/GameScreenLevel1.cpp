@@ -89,7 +89,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		{
 			if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 			{
-				mCoins.erase(mCoins.begin() + i);
+				mCoins[i]->MoveOOB();
 				GameManager::Instance()->scoreManager->IncreaseScore(100);
 			}
 		}
@@ -97,7 +97,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		{
 			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), mCoins[i]->GetCollisionBox()))
 			{
-				mCoins.erase(mCoins.begin() + i);
+				mCoins[i]->MoveOOB();
 				GameManager::Instance()->scoreManager->IncreaseScore(100);
 			}
 		}
@@ -129,21 +129,26 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 			}
 		}
 	}
-	if (mario->GetDead() == false)
+	GameScreen::Update(deltaTime, e);
+	if (mario->GetDead() == false )
 	{
 		if (GameManager::Instance()->collision->Box(mario->GetCollisionBox(), flag->GetCollisionBox()))
 		{
+			levelOver = true;
 			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
 		}
 	}
-	if (luigi->GetDead() == false)
+	if (levelOver == false)
 	{
-		if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), flag->GetCollisionBox()))
+		if (luigi->GetDead() == false )
 		{
-			GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+			if (GameManager::Instance()->collision->Box(luigi->GetCollisionBox(), flag->GetCollisionBox()))
+			{
+				levelOver = true;
+				GameManager::Instance()->gameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+			}
 		}
 	}
-	GameScreen::Update(deltaTime, e);
 }
 
 bool GameScreenLevel1::SetUpLevel()
