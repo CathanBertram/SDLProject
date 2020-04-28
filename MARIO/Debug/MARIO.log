@@ -1,6 +1,2 @@
-﻿  GameScreenLevel1.cpp
-E:\SDLProject\MARIO\GameScreenLevel1.cpp(20,20): warning C4018: '<': signed/unsigned mismatch
-E:\SDLProject\MARIO\GameScreenLevel1.cpp(22,21): warning C4018: '<': signed/unsigned mismatch
-E:\SDLProject\MARIO\GameScreenLevel1.cpp(86,20): warning C4018: '<': signed/unsigned mismatch
-E:\SDLProject\MARIO\GameScreenLevel1.cpp(105,20): warning C4018: '<': signed/unsigned mismatch
+﻿  GameScreenManager.cpp
   MARIO.vcxproj -> E:\SDLProject\Debug\MARIO.exe
